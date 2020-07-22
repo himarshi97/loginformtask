@@ -34,6 +34,67 @@ export const signinUser = ({ identifier, password, history }) => {
 
       .catch((error) => {
         dispatch({ type: "Signin_FAILURE", message: error.response });
+        alert("login error");
+      });
+  };
+};
+export const createPaste = ({ content, Expiration, Exposure, title }) => {
+  console.log(content, Expiration, Exposure, title);
+  const tokenn = localStorage.getItem("token");
+  const authtoken = {
+    headers: {
+      Authorization: `Bearer ${tokenn}`,
+    },
+  };
+  console.log(authtoken);
+  return (dispatch) => {
+    dispatch({ type: "Createpaste_PENDING" });
+
+    axios
+      .post(
+        "https://pastebindemo.herokuapp.com/pastes",
+        {
+          content,
+          Expiration,
+          Exposure,
+          title,
+        },
+        authtoken
+      )
+
+      .then((res) => {
+        dispatch({ type: "Createpaste_SUCCESS", stats: res.data.data });
+        console.log(res);
+      })
+
+      .catch((error) => {
+        console.log(error);
+        dispatch({ type: "Createpaste_FAILURE", message: error.response });
+      });
+  };
+};
+export const pasteList = () => {
+  const tokenn = localStorage.getItem("token");
+  const authtoken = {
+    headers: {
+      Authorization: `Bearer ${tokenn}`,
+    },
+  };
+  console.log(authtoken);
+  return (dispatch) => {
+    dispatch({ type: "Pastelist_PENDING" });
+
+    axios
+      .get("https://pastebindemo.herokuapp.com/pastes", authtoken)
+
+      .then((res) => {
+        dispatch({ type: "Pastelist_SUCCESS", stats: res.data });
+        console.log(res);
+      })
+
+      .catch((error) => {
+        console.log(error);
+        dispatch({ type: "Pastelist_FAILURE", message: error.response });
       });
   };
 };

@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
+import { createPaste, pasteList } from "../actions/action.js";
+import { useDispatch, useSelector } from "react-redux";
 
 import {
   Table,
@@ -22,10 +24,10 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const FormSchema = Yup.object().shape({
-  text: Yup.string().trim().required(),
-  selectionexpiry: Yup.string().required(),
-  selection: Yup.string().required(),
-  name: Yup.string().required(),
+  content: Yup.string().trim().required(),
+  Expiration: Yup.string().required(),
+  Exposure: Yup.string().required(),
+  title: Yup.string().required(),
 });
 const Dashboard = (props) => {
   const { buttonLabel, className } = props;
@@ -36,18 +38,20 @@ const Dashboard = (props) => {
   const { register, control, errors, handleSubmit } = useForm({
     resolver: yupResolver(FormSchema),
   });
-  const onSubmit = (data) => {
-    console.log(data);
+  const { stats } = useSelector((state) => ({
+    stats: state.LoginReducers.stats,
+  }));
+  console.log(stats);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(pasteList());
+  }, [dispatch]);
 
-    toast.success("Paste created successfully !", {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+  //   const onSubmit = (data) => {
+  //     console.log(data);
+  //   };
+  const onSubmit = ({ content, Expiration, Exposure, title }) => {
+    dispatch(createPaste({ content, Expiration, Exposure, title }));
   };
 
   return (
@@ -73,11 +77,11 @@ const Dashboard = (props) => {
                   type="textarea"
                   ref={register}
                   control={control}
-                  name="text"
+                  name="content"
                   defaultValue=""
                 />
-                {errors.text && (
-                  <div className="text-danger">* {errors.text.message}</div>
+                {errors.content && (
+                  <div className="text-danger">* {errors.content.message}</div>
                 )}
               </FormGroup>
               <FormGroup>
@@ -87,16 +91,16 @@ const Dashboard = (props) => {
                   ref={register}
                   control={control}
                   type="select"
-                  name="selectionexpiry"
+                  name="Expiration"
                   id="Select"
                 >
-                  <option value="minutes" name="minutes">
+                  <option value="aminute" name="aminute">
                     10 Minutes
                   </option>
-                  <option value="hours" name="hours">
+                  <option value="ahours" name="ahours">
                     1 Hours
                   </option>
-                  <option value="day" name="day">
+                  {/* <option value="day" name="day">
                     1 Day
                   </option>
                   <option value="week" name="week">
@@ -113,11 +117,11 @@ const Dashboard = (props) => {
                   </option>
                   <option value="year" name="year">
                     1 Year
-                  </option>
+                  </option> */}
                 </Controller>
-                {errors.selectionexpiry && (
+                {errors.Expiration && (
                   <div className="text-danger">
-                    * {errors.selectionexpiry.message}
+                    * {errors.Expiration.message}
                   </div>
                 )}
               </FormGroup>
@@ -129,7 +133,7 @@ const Dashboard = (props) => {
                   ref={register}
                   control={control}
                   type="select"
-                  name="selection"
+                  name="Exposure"
                   id="Select"
                 >
                   <option value="public" name="public">
@@ -138,11 +142,12 @@ const Dashboard = (props) => {
                   <option value="private" name="private">
                     Private(members only)
                   </option>
+                  <option value="unlisted" name="unlisted">
+                    unlisted
+                  </option>
                 </Controller>
-                {errors.selection && (
-                  <div className="text-danger">
-                    * {errors.selection.message}
-                  </div>
+                {errors.Exposure && (
+                  <div className="text-danger">* {errors.Exposure.message}</div>
                 )}
               </FormGroup>
               <FormGroup>
@@ -152,12 +157,12 @@ const Dashboard = (props) => {
                   as={Input}
                   ref={register}
                   control={control}
-                  name="name"
+                  name="title"
                   defaultValue=""
                 />
 
-                {errors.name && (
-                  <div className="text-danger">* {errors.name.message}</div>
+                {errors.title && (
+                  <div className="text-danger">* {errors.title.message}</div>
                 )}
               </FormGroup>
               <Button color="primary" type="submit" onClick={toggle}>
@@ -215,6 +220,16 @@ const Dashboard = (props) => {
           </tr>
         </tbody>
       </Table>
+
+      {/* {stats !== null && (
+        <ul>
+          {stats.map((item, index) => (
+            <li key={index} className="li">
+              {item.Expiration}
+            </li>
+          ))}
+        </ul>
+      )} */}
     </div>
   );
 };
