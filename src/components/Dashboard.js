@@ -38,18 +38,15 @@ const Dashboard = (props) => {
   const { register, control, errors, handleSubmit } = useForm({
     resolver: yupResolver(FormSchema),
   });
-  const { stats } = useSelector((state) => ({
-    stats: state.LoginReducers.stats,
+  const { list } = useSelector((state) => ({
+    list: state.LoginReducers.list,
   }));
-  console.log(stats);
+  console.log(list);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(pasteList());
   }, [dispatch]);
 
-  //   const onSubmit = (data) => {
-  //     console.log(data);
-  //   };
   const onSubmit = ({ content, Expiration, Exposure, title }) => {
     dispatch(createPaste({ content, Expiration, Exposure, title }));
   };
@@ -60,11 +57,6 @@ const Dashboard = (props) => {
         <Button color="primary" onClick={toggle}>
           Add Paste
         </Button>
-
-        {/* <Col className="Dashboardtitle" sm="7">
-            Dashbord
-          </Col> */}
-
         <Modal isOpen={modal} toggle={toggle} className={className}>
           <ModalHeader toggle={toggle}>Create Paste</ModalHeader>
           <ModalBody>
@@ -100,24 +92,6 @@ const Dashboard = (props) => {
                   <option value="ahours" name="ahours">
                     1 Hours
                   </option>
-                  {/* <option value="day" name="day">
-                    1 Day
-                  </option>
-                  <option value="week" name="week">
-                    1 Week
-                  </option>
-                  <option value="weeks" name="weeks">
-                    2 Weeks
-                  </option>
-                  <option value="Month" name="month">
-                    1 Month
-                  </option>
-                  <option value="Months" name="months">
-                    6 Months
-                  </option>
-                  <option value="year" name="year">
-                    1 Year
-                  </option> */}
                 </Controller>
                 {errors.Expiration && (
                   <div className="text-danger">
@@ -177,17 +151,6 @@ const Dashboard = (props) => {
             </Button>
           </ModalFooter>
         </Modal>
-        <ToastContainer
-          position="top-center"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
       </div>
 
       <Table responsive>
@@ -200,36 +163,26 @@ const Dashboard = (props) => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-          </tr>
+          {/* {stats == null ? (
+            <div>refresh page</div>
+          ) : (
+            <> */}
+          {list
+            .slice(0)
+            .reverse()
+            .map((item, index) => (
+              <tr key={index}>
+                <th scope="row">{index + 1}</th>
+
+                <td>{item.title}</td>
+                <td>{item.content}</td>
+                <td>{item.Expiration}</td>
+              </tr>
+            ))}
+          {/* </>
+          )} */}
         </tbody>
       </Table>
-
-      {/* {stats !== null && (
-        <ul>
-          {stats.map((item, index) => (
-            <li key={index} className="li">
-              {item.Expiration}
-            </li>
-          ))}
-        </ul>
-      )} */}
     </div>
   );
 };

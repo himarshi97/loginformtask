@@ -24,7 +24,7 @@ function App() {
             <Route path="/dashboard" component={Dashboard} />
             <Route path="/" component={Login} />
           </Switch>
-          {/* <ToastContainer
+          <ToastContainer
             position="top-center"
             autoClose={5000}
             hideProgressBar={false}
@@ -34,7 +34,7 @@ function App() {
             pauseOnFocusLoss
             draggable
             pauseOnHover
-          /> */}
+          />
           {/* {token ? (
             <div>
               <Switch>

@@ -71,6 +71,7 @@ const Loginform = () => {
               <Controller
                 placeholder="Enter Password"
                 as={Input}
+                type="password"
                 ref={register}
                 control={control}
                 name="password"

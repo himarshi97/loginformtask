@@ -34,7 +34,15 @@ export const signinUser = ({ identifier, password, history }) => {
 
       .catch((error) => {
         dispatch({ type: "Signin_FAILURE", message: error.response });
-        alert("login error");
+        toast.warn("Login Error !", {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       });
   };
 };
@@ -64,12 +72,30 @@ export const createPaste = ({ content, Expiration, Exposure, title }) => {
 
       .then((res) => {
         dispatch({ type: "Createpaste_SUCCESS", stats: res.data.data });
+        toast.success("Paste Created Successfully !", {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
         console.log(res);
       })
 
       .catch((error) => {
         console.log(error);
         dispatch({ type: "Createpaste_FAILURE", message: error.response });
+        toast.warn("paste not created", {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       });
   };
 };
@@ -88,7 +114,7 @@ export const pasteList = () => {
       .get("https://pastebindemo.herokuapp.com/pastes", authtoken)
 
       .then((res) => {
-        dispatch({ type: "Pastelist_SUCCESS", stats: res.data });
+        dispatch({ type: "Pastelist_SUCCESS", list: res.data });
         console.log(res);
       })
 
