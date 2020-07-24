@@ -1,15 +1,39 @@
-//import React from "react";
-//import { BrowserRouter, Switch, Route } from "react-router-dom";
-//import Dashboard from "./components/Dashboard.js";
-// const AppRouter = () => {
-//   return (
-//     <div></div>
-// <BrowserRouter>
-//   <Switch>
-//     <Route path="/dashboard" component={Dashboard} />
-//   </Switch>
-// </BrowserRouter>
-//   );
-// };
+import React from "react";
+import {
+  Link,
+  BrowserRouter,
+  Switch,
+  Route,
+  Redirect,
+  useHistory,
+} from "react-router-dom";
+import Dashboard from "./Dashboard.js";
+import Login from "./Login.js";
+const AppRouter = () => {
+  var tokenn = localStorage.getItem("token");
+  console.log("authtoken", tokenn);
+  let history = useHistory();
+  //   if (tokenn !== undefined) {
+  //     history.push("/");
+  //   } else {
+  //     history.push("/");
+  //   }
+  return (
+    <BrowserRouter>
+      <Switch>
+        {/* {!tokenn ? (
+        <div> */}
 
-// export default AppRouter;
+        <Route path="/dashboard" component={Dashboard} />
+        {/* </div>
+      ) : (
+        <div> */}
+        <Route path="/" component={Login} />
+        {/* </div>
+      )} */}
+      </Switch>
+    </BrowserRouter>
+  );
+};
+
+export default AppRouter;

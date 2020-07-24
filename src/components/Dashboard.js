@@ -22,7 +22,15 @@ import { yupResolver } from "@hookform/resolvers";
 import * as Yup from "yup";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import {
+  Link,
+  BrowserRouter,
+  Switch,
+  Route,
+  Redirect,
+  useHistory,
+} from "react-router-dom";
+import Login from "./Login.js";
 const FormSchema = Yup.object().shape({
   content: Yup.string().trim().required(),
   Expiration: Yup.string().required(),
@@ -50,6 +58,20 @@ const Dashboard = (props) => {
   const onSubmit = ({ content, Expiration, Exposure, title }) => {
     dispatch(createPaste({ content, Expiration, Exposure, title }));
   };
+  let history = useHistory();
+
+  const logout = () => {
+    var tokenn = localStorage.getItem("token");
+
+    var cleartokenn = localStorage.clear("authtoken");
+
+    if (cleartokenn == undefined) {
+      console.log("cleartoken", cleartokenn);
+      history.push("/");
+    } else {
+      history.push("/dashboard");
+    }
+  };
 
   return (
     <div className="dashboard">
@@ -57,6 +79,9 @@ const Dashboard = (props) => {
         <Button color="primary" onClick={toggle}>
           Add Paste
         </Button>
+        <div className="logout">
+          <Button onClick={logout}>Logout</Button>
+        </div>
         <Modal isOpen={modal} toggle={toggle} className={className}>
           <ModalHeader toggle={toggle}>Create Paste</ModalHeader>
           <ModalBody>

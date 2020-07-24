@@ -94,3 +94,7 @@ code {
 .inputtext {
   overflow: scroll;
 }
+.logout {
+  float: right;
+  margin-right: 10px;
+}

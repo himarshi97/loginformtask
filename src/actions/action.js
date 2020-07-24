@@ -28,8 +28,10 @@ export const signinUser = ({ identifier, password, history }) => {
         var token = localStorage.getItem("token");
 
         console.log("token", token);
-
         history.push("/dashboard");
+        // {
+        //   token ? history.push("/dashboard") : history.push("/");
+        // }
       })
 
       .catch((error) => {
@@ -122,6 +124,15 @@ export const pasteList = () => {
       .catch((error) => {
         console.log(error);
         dispatch({ type: "Pastelist_FAILURE", message: error.response });
+        toast.warn("try to login again !", {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       });
   };
 };
