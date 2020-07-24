@@ -10,6 +10,7 @@ import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import LoginReducers from "./allreducers/Rootreducer";
 import { ToastContainer, toast } from "react-toastify";
+
 const store = createStore(LoginReducers, applyMiddleware(thunk));
 
 function App() {

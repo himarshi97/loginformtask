@@ -34,13 +34,14 @@ export const signinUser = ({ identifier, password, history }) => {
 
       .catch((error) => {
         dispatch({ type: "Signin_FAILURE", message: error.response });
-        toast.warn("Login Error !", {
+        toast.error("Login Error !", {
           position: "top-center",
           autoClose: 2000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
           draggable: true,
+
           progress: undefined,
         });
       });
@@ -87,7 +88,7 @@ export const createPaste = ({ content, Expiration, Exposure, title }) => {
       .catch((error) => {
         console.log(error);
         dispatch({ type: "Createpaste_FAILURE", message: error.response });
-        toast.warn("paste not created", {
+        toast.error("paste not created", {
           position: "top-center",
           autoClose: 2000,
           hideProgressBar: false,

@@ -39,7 +39,7 @@ const LoginReducers = (state = initialState, action) => {
 
         error: false,
         message: null,
-        // stats: null,
+        stats: null,
       };
     case "Createpaste_SUCCESS":
       return {
@@ -56,7 +56,7 @@ const LoginReducers = (state = initialState, action) => {
 
         error: true,
         message: action.message,
-        //stats: null,
+        stats: null,
       };
     case "Pastelist_PENDING":
       return {
@@ -64,7 +64,6 @@ const LoginReducers = (state = initialState, action) => {
 
         error: false,
         message: null,
-        // stats: null,
       };
     case "Pastelist_SUCCESS":
       return {
@@ -81,7 +80,6 @@ const LoginReducers = (state = initialState, action) => {
 
         error: true,
         message: action.message,
-        // stats: null,
       };
 
     default:
