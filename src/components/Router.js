@@ -12,7 +12,7 @@ import Login from "./Login.js";
 const AppRouter = () => {
   var tokenn = localStorage.getItem("token");
   console.log("authtoken", tokenn);
-  let history = useHistory();
+  //let history = useHistory();
   //   if (tokenn !== undefined) {
   //     history.push("/");
   //   } else {
@@ -21,13 +21,18 @@ const AppRouter = () => {
   return (
     <BrowserRouter>
       <Switch>
-        {/* {!tokenn ? (
+        {/* {tokenn ? (
         <div> */}
-
+        {/* <Redirect to={{ pathname: "/dashboard" }}> */}
+        {/* <Dashboard /> */}
+        {/* </Redirect> */}
         <Route path="/dashboard" component={Dashboard} />
         {/* </div>
       ) : (
-        <div> */}
+        <div>
+          <Redirect to={{ pathname: "/" }}>
+            <Login />
+          </Redirect> */}
         <Route path="/" component={Login} />
         {/* </div>
       )} */}

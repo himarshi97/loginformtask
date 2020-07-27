@@ -59,10 +59,11 @@ const Dashboard = (props) => {
     dispatch(createPaste({ content, Expiration, Exposure, title }));
   };
   let history = useHistory();
-
+  var tokenn = localStorage.getItem("token");
+  console.log(tokenn);
   const logout = () => {
-    var tokenn = localStorage.getItem("token");
-
+    // var tokenn = localStorage.getItem("token");
+    // console.log(tokenn);
     var cleartokenn = localStorage.clear("authtoken");
 
     if (cleartokenn == undefined) {
@@ -75,139 +76,153 @@ const Dashboard = (props) => {
 
   return (
     <div className="dashboard">
-      <div className="modalll">
-        <Button color="primary" onClick={toggle}>
-          Add Paste
-        </Button>
-        <div className="logout">
-          <Button onClick={logout}>Logout</Button>
-        </div>
-        <Modal isOpen={modal} toggle={toggle} className={className}>
-          <ModalHeader toggle={toggle}>Create Paste</ModalHeader>
-          <ModalBody>
-            <Form onSubmit={handleSubmit(onSubmit)}>
-              <FormGroup>
-                <Label for="exampleText">Add Paste</Label>
-                <Controller
-                  placeholder=""
-                  as={Input}
-                  type="textarea"
-                  ref={register}
-                  control={control}
-                  name="content"
-                  defaultValue=""
-                />
-                {errors.content && (
-                  <div className="text-danger">* {errors.content.message}</div>
-                )}
-              </FormGroup>
-              <FormGroup>
-                <Label for="exampleSelect">Paste Expiration</Label>
-                <Controller
-                  as={Input}
-                  ref={register}
-                  control={control}
-                  type="select"
-                  name="Expiration"
-                  id="Select"
-                >
-                  <option value="aminute" name="aminute">
-                    10 Minutes
-                  </option>
-                  <option value="ahours" name="ahours">
-                    1 Hours
-                  </option>
-                </Controller>
-                {errors.Expiration && (
-                  <div className="text-danger">
-                    * {errors.Expiration.message}
-                  </div>
-                )}
-              </FormGroup>
-              <FormGroup>
-                <Label for="exampleSelect">Paste Exposure</Label>
-
-                <Controller
-                  as={Input}
-                  ref={register}
-                  control={control}
-                  type="select"
-                  name="Exposure"
-                  id="Select"
-                >
-                  <option value="public" name="public">
-                    Public
-                  </option>
-                  <option value="private" name="private">
-                    Private(members only)
-                  </option>
-                  <option value="unlisted" name="unlisted">
-                    unlisted
-                  </option>
-                </Controller>
-                {errors.Exposure && (
-                  <div className="text-danger">* {errors.Exposure.message}</div>
-                )}
-              </FormGroup>
-              <FormGroup>
-                <Label>Paste Name/Title</Label>
-                <Controller
-                  placeholder="Enter text here..."
-                  as={Input}
-                  ref={register}
-                  control={control}
-                  name="title"
-                  defaultValue=""
-                />
-
-                {errors.title && (
-                  <div className="text-danger">* {errors.title.message}</div>
-                )}
-              </FormGroup>
-              <Button color="primary" type="submit" onClick={toggle}>
-                Create New Paste
-              </Button>
-            </Form>
-          </ModalBody>
-          <ModalFooter>
-            {" "}
-            <Button color="secondary" onClick={toggle}>
-              Cancel
+      {tokenn ? (
+        <>
+          <div className="modalll">
+            <Button color="primary" onClick={toggle}>
+              Add Paste
             </Button>
-          </ModalFooter>
-        </Modal>
-      </div>
+            <div className="logout">
+              <Button onClick={logout}>Logout</Button>
+            </div>
+            <Modal isOpen={modal} toggle={toggle} className={className}>
+              <ModalHeader toggle={toggle}>Create Paste</ModalHeader>
+              <ModalBody>
+                <Form onSubmit={handleSubmit(onSubmit)}>
+                  <FormGroup>
+                    <Label for="exampleText">Add Paste</Label>
+                    <Controller
+                      placeholder=""
+                      as={Input}
+                      type="textarea"
+                      ref={register}
+                      control={control}
+                      name="content"
+                      defaultValue=""
+                    />
+                    {errors.content && (
+                      <div className="text-danger">
+                        * {errors.content.message}
+                      </div>
+                    )}
+                  </FormGroup>
+                  <FormGroup>
+                    <Label for="exampleSelect">Paste Expiration</Label>
+                    <Controller
+                      as={Input}
+                      ref={register}
+                      control={control}
+                      type="select"
+                      name="Expiration"
+                      id="Select"
+                    >
+                      <option value="aminute" name="aminute">
+                        10 Minutes
+                      </option>
+                      <option value="ahours" name="ahours">
+                        1 Hours
+                      </option>
+                    </Controller>
+                    {errors.Expiration && (
+                      <div className="text-danger">
+                        * {errors.Expiration.message}
+                      </div>
+                    )}
+                  </FormGroup>
+                  <FormGroup>
+                    <Label for="exampleSelect">Paste Exposure</Label>
 
-      <Table responsive>
-        <thead className="tablehead">
-          <tr>
-            <th>No.</th>
-            <th>NAME</th>
-            <th>ADDED</th>
-            <th>EXPIRES</th>
-          </tr>
-        </thead>
-        <tbody>
-          {/* {stats == null ? (
+                    <Controller
+                      as={Input}
+                      ref={register}
+                      control={control}
+                      type="select"
+                      name="Exposure"
+                      id="Select"
+                    >
+                      <option value="public" name="public">
+                        Public
+                      </option>
+                      <option value="private" name="private">
+                        Private(members only)
+                      </option>
+                      <option value="unlisted" name="unlisted">
+                        unlisted
+                      </option>
+                    </Controller>
+                    {errors.Exposure && (
+                      <div className="text-danger">
+                        * {errors.Exposure.message}
+                      </div>
+                    )}
+                  </FormGroup>
+                  <FormGroup>
+                    <Label>Paste Name/Title</Label>
+                    <Controller
+                      placeholder="Enter text here..."
+                      as={Input}
+                      ref={register}
+                      control={control}
+                      name="title"
+                      defaultValue=""
+                    />
+
+                    {errors.title && (
+                      <div className="text-danger">
+                        * {errors.title.message}
+                      </div>
+                    )}
+                  </FormGroup>
+                  <Button color="primary" type="submit" onClick={toggle}>
+                    Create New Paste
+                  </Button>
+                </Form>
+              </ModalBody>
+              <ModalFooter>
+                {" "}
+                <Button color="secondary" onClick={toggle}>
+                  Cancel
+                </Button>
+              </ModalFooter>
+            </Modal>
+          </div>
+
+          <Table responsive>
+            <thead className="tablehead">
+              <tr>
+                <th>No.</th>
+                <th>NAME</th>
+                <th>ADDED</th>
+                <th>EXPIRES</th>
+              </tr>
+            </thead>
+            <tbody>
+              {/* {stats == null ? (
             <div>refresh page</div>
           ) : (
             <> */}
-          {list
-            .slice(0)
-            .reverse()
-            .map((item, index) => (
-              <tr key={index}>
-                <th scope="row">{index + 1}</th>
+              {list
+                .slice(0)
+                .reverse()
+                .map((item, index) => (
+                  <tr key={index}>
+                    <th scope="row">{index + 1}</th>
 
-                <td>{item.title}</td>
-                <td>{item.content}</td>
-                <td>{item.Expiration}</td>
-              </tr>
-            ))}
-          {/* </>
+                    <td>{item.title}</td>
+                    <td>{item.content}</td>
+                    <td>{item.Expiration}</td>
+                  </tr>
+                ))}
+              {/* </>
           )} */}
-        </tbody>
-      </Table>
+            </tbody>
+          </Table>
+        </>
+      ) : (
+        <div>
+          <Redirect to="/" />
+        </div>
+      )}
     </div>
   );
 };

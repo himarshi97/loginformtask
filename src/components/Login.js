@@ -35,17 +35,7 @@ const Loginform = () => {
   const onSubmit = ({ identifier, password }) => {
     dispatch(signinUser({ identifier, password, history }));
   };
-  // const notify = () => {
-  //   toast.success("Login Success !", {
-  //     position: "top-center",
-  //     autoClose: 500,
-  //     hideProgressBar: false,
-  //     closeOnClick: true,
-  //     pauseOnHover: true,
-  //     draggable: true,
-  //     progress: undefined,
-  //   });
-  // };
+
   return (
     <div className="form">
       <Container>
@@ -84,11 +74,9 @@ const Loginform = () => {
             </FormGroup>
             <br />
             <div className="signin">
-              {/* <Link to="/dashboard"> */}
               <Button color="primary" type="submit" className="signbutton">
                 Sign in
               </Button>
-              {/* </Link> */}
             </div>
           </Form>
         </div>
