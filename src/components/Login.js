@@ -48,51 +48,55 @@ const Loginform = () => {
           <Redirect to="/dashboard" />
         </div>
       ) : (
-        <div className="form">
-          <div className="logintitle">Login</div>
-          <hr />
-          <Container>
-            <Form onSubmit={handleSubmit(onSubmit)}>
-              <div className="formgroup">
-                <FormGroup>
-                  <Controller
-                    placeholder="Enter Name"
-                    as={Input}
-                    ref={register}
-                    control={control}
-                    name="identifier"
-                    defaultValue=""
-                  />
+        <div className="home">
+          <div className="form">
+            <div className="logintitle">Login</div>
+            <hr />
+            <Container>
+              <Form onSubmit={handleSubmit(onSubmit)}>
+                <div className="formgroup">
+                  <FormGroup>
+                    <Controller
+                      placeholder="Enter Name"
+                      as={Input}
+                      ref={register}
+                      control={control}
+                      name="identifier"
+                      defaultValue=""
+                    />
 
-                  {errors.identifier && (
-                    <p className="text-danger">* {errors.identifier.message}</p>
-                  )}
-                </FormGroup>
+                    {errors.identifier && (
+                      <p className="text-danger">
+                        * {errors.identifier.message}
+                      </p>
+                    )}
+                  </FormGroup>
 
-                <FormGroup className="formgroup">
-                  <Controller
-                    placeholder="Enter Password"
-                    as={Input}
-                    type="password"
-                    ref={register}
-                    control={control}
-                    name="password"
-                    defaultValue=""
-                    className="inputtext"
-                  />
+                  <FormGroup className="formgroup">
+                    <Controller
+                      placeholder="Enter Password"
+                      as={Input}
+                      type="password"
+                      ref={register}
+                      control={control}
+                      name="password"
+                      defaultValue=""
+                      className="inputtext"
+                    />
 
-                  {errors.password && (
-                    <p className="text-danger">* {errors.password.message}</p>
-                  )}
-                </FormGroup>
-              </div>
-              <div className="signin">
-                <Button color="primary" type="submit" className="signbutton">
-                  Sign in
-                </Button>
-              </div>
-            </Form>
-          </Container>
+                    {errors.password && (
+                      <p className="text-danger">* {errors.password.message}</p>
+                    )}
+                  </FormGroup>
+                </div>
+                <div className="signin">
+                  <Button color="primary" type="submit" className="signbutton">
+                    Sign in
+                  </Button>
+                </div>
+              </Form>
+            </Container>
+          </div>
         </div>
       )}
     </div>

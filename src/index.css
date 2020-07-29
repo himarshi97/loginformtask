@@ -24,26 +24,41 @@ code {
   background-color: whitesmoke;
 }
 .home {
-  position: relative;
-  border: 15px solid black;
+  position: absolute;
+
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1d4f6e;
   /* background-color: darkblue; */
 }
-.inerdiv {
-  position: absolute;
+.banner {
+  position: relative;
+  width: 350px;
+  height: 350px;
+  padding-top: 30px;
+  background-color: white;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  display: inline-block;
 }
 .form {
-  /* position: absolute;
-  margin: auto;
+  display: inline-block;
+  position: relative;
+  /* margin: auto;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0; */
-  width: 350px;
-  height: 350px;
+
+  width: 400px;
+  /* height: 350px; */
   padding-top: 30px;
-  background-color: #1d4f6e;
+  background-color: white;
   border: 1px solid lightgrey;
-  color: white;
+  position: absolute;
   border-radius: 3px;
 }
 
@@ -55,14 +70,16 @@ code {
 }
 .signin {
   width: 100px;
-  position: fixed;
-  /* margin-top: 40px; */
-  margin-left: 110px;
+
+  margin-left: 97px;
+
+  height: 50px;
+  width: 150px;
 }
 .signbutton {
-  padding-top: 40px;
   border: 1px solid black;
   width: 100%;
+
   /* margin-top: 40px; */
 }
 .formgroup {
