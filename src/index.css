@@ -5,34 +5,26 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background-color: blue; */
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-.login {
-  /* padding-bottom: 10px;
-  padding-top: 10px;
-  width: 600px;
-  background-color: white; */
-}
+
 .main {
-  /* padding-top: 220px; */
   height: 100%;
   background-color: whitesmoke;
 }
 .home {
   position: absolute;
 
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #1d4f6e;
-  /* background-color: darkblue; */
 }
 .banner {
   position: relative;
@@ -53,7 +45,7 @@ code {
   bottom: 0;
   left: 0; */
 
-  width: 400px;
+  width: 350px;
   /* height: 350px; */
   padding-top: 30px;
   background-color: white;
@@ -69,46 +61,22 @@ code {
   padding-bottom: 10px;
 }
 .signin {
-  width: 100px;
-
-  margin-left: 97px;
-
-  height: 50px;
-  width: 150px;
+  /* margin-left: 45px; */
+  /* border: 1px solid black; */
+  /* height: 50px;
+  width: 150px; */
 }
 .signbutton {
-  border: 1px solid black;
-  width: 100%;
-
-  /* margin-top: 40px; */
+  /* margin-left: 165px; */
+  margin-bottom: 15px;
+  margin-left: 30%;
+  width: 40%;
+  /* width: 70%; */
 }
 .formgroup {
   border: 1px sold black;
 }
-/* display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center', */
-/* .formm {
-  background-color: white;
-  border: 0px;
-}
-.inputtext {
-  text-align: center;
-  width: 100px;
-}
-.formcol {
-  padding-top: 100px;
-  background-color: white;
-}
-.formig {
-  height: 200px;
-} */
-/* @media only screen and (min-width: 320px) and (max-width: 374px) {
-  .main-container {
-    margin: 0rem 0rem;
 
-  }
-} */
 .dashboard {
   padding-top: 5px;
   margin-left: 15%;
@@ -120,8 +88,6 @@ code {
   background-color: whitesmoke;
 }
 .modalll {
-  /* margin-bottom: 10px;
-  margin-left: 10px; */
   border: 1px solid black;
   background-color: darkblue;
 }

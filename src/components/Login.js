@@ -42,64 +42,57 @@ const Loginform = () => {
   var tokenn = localStorage.getItem("token");
   console.log(tokenn);
   return (
-    <div>
+    <>
       {tokenn ? (
-        <div>
-          <Redirect to="/dashboard" />
-        </div>
+        <Redirect to="/dashboard" />
       ) : (
-        <div className="home">
-          <div className="form">
-            <div className="logintitle">Login</div>
+        <Col className="home">
+          <Col className="form" sm="5">
+            <Col className="logintitle">Login</Col>
             <hr />
             <Container>
               <Form onSubmit={handleSubmit(onSubmit)}>
-                <div className="formgroup">
-                  <FormGroup>
-                    <Controller
-                      placeholder="Enter Name"
-                      as={Input}
-                      ref={register}
-                      control={control}
-                      name="identifier"
-                      defaultValue=""
-                    />
+                <FormGroup>
+                  <Controller
+                    placeholder="Enter Name"
+                    as={Input}
+                    ref={register}
+                    control={control}
+                    name="identifier"
+                    defaultValue=""
+                  />
 
-                    {errors.identifier && (
-                      <p className="text-danger">
-                        * {errors.identifier.message}
-                      </p>
-                    )}
-                  </FormGroup>
+                  {errors.identifier && (
+                    <p className="text-danger">* {errors.identifier.message}</p>
+                  )}
+                </FormGroup>
 
-                  <FormGroup className="formgroup">
-                    <Controller
-                      placeholder="Enter Password"
-                      as={Input}
-                      type="password"
-                      ref={register}
-                      control={control}
-                      name="password"
-                      defaultValue=""
-                      className="inputtext"
-                    />
+                <FormGroup className="formgroup">
+                  <Controller
+                    placeholder="Enter Password"
+                    as={Input}
+                    type="password"
+                    ref={register}
+                    control={control}
+                    name="password"
+                    defaultValue=""
+                    className="inputtext"
+                  />
 
-                    {errors.password && (
-                      <p className="text-danger">* {errors.password.message}</p>
-                    )}
-                  </FormGroup>
-                </div>
-                <div className="signin">
-                  <Button color="primary" type="submit" className="signbutton">
-                    Sign in
-                  </Button>
-                </div>
+                  {errors.password && (
+                    <p className="text-danger">* {errors.password.message}</p>
+                  )}
+                </FormGroup>
+
+                <Button color="primary" type="submit" className="signbutton">
+                  Sign in
+                </Button>
               </Form>
             </Container>
-          </div>
-        </div>
+          </Col>
+        </Col>
       )}
-    </div>
+    </>
   );
 };
 
