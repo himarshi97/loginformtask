@@ -20,21 +20,30 @@ code {
 }
 .main {
   /* padding-top: 220px; */
-  height: 100vh;
-  background-color: blue;
+  height: 100%;
+  background-color: whitesmoke;
+}
+.home {
+  position: relative;
+  border: 15px solid black;
+  /* background-color: darkblue; */
+}
+.inerdiv {
+  position: absolute;
 }
 .form {
-  position: absolute;
+  /* position: absolute;
   margin: auto;
   top: 0;
   right: 0;
   bottom: 0;
-  left: 0;
+  left: 0; */
   width: 350px;
   height: 350px;
-  padding-top: 20px;
-  background-color: white;
-
+  padding-top: 30px;
+  background-color: #1d4f6e;
+  border: 1px solid lightgrey;
+  color: white;
   border-radius: 3px;
 }
 
@@ -46,11 +55,18 @@ code {
 }
 .signin {
   width: 100px;
-
+  position: fixed;
+  /* margin-top: 40px; */
   margin-left: 110px;
 }
 .signbutton {
+  padding-top: 40px;
+  border: 1px solid black;
   width: 100%;
+  /* margin-top: 40px; */
+}
+.formgroup {
+  border: 1px sold black;
 }
 /* display: 'flex',
     alignItems: 'center',
@@ -77,16 +93,20 @@ code {
   }
 } */
 .dashboard {
-  padding-top: 10px;
-
+  padding-top: 5px;
+  margin-left: 15%;
+  width: 70%;
   background-color: white;
+  border: 1px solid lightgrey;
 }
 .tablehead {
   background-color: whitesmoke;
 }
 .modalll {
-  margin-bottom: 10px;
-  margin-left: 10px;
+  /* margin-bottom: 10px;
+  margin-left: 10px; */
+  border: 1px solid black;
+  background-color: darkblue;
 }
 .selected {
   height: 200px;
@@ -95,7 +115,59 @@ code {
 .inputtext {
   overflow: scroll;
 }
-.logout {
+
+.carticon {
+  margin-right: 5px;
+}
+.modal {
+  margin-top: 70px;
+  padding-left: 10px;
+  padding-right: 70px;
+}
+.modall {
+}
+.modalbodyy {
+  background-color: white;
+  margin: auto;
+  width: 115%;
+  height: 100%;
+}
+.logo {
+  width: 80px;
+  height: 70px;
+}
+.addpaste {
+  margin-left: 5px;
+  margin-bottom: 5px;
+}
+.logodiv {
+  display: inline-block;
+}
+.linkdiv {
+  color: white;
+  margin-left: 5px;
+  display: inline-block;
+}
+.link {
+  padding-left: 30px;
+}
+.adminname {
+  display: inline-block;
+
   float: right;
-  margin-right: 10px;
+  padding-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 25px;
+  color: white;
+}
+
+.logout {
+  padding-right: 15px;
+  padding-top: 15px;
+  float: right;
+  display: inline-block;
+}
+.usericon {
+  margin-right: 5px;
 }
