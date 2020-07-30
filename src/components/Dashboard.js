@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { createPaste, pasteList } from "../actions/action.js";
 import { useDispatch, useSelector } from "react-redux";
+import Moment from "react-moment";
 
 import {
   Table,
@@ -377,15 +378,17 @@ const Dashboard = (props) => {
           <Container>
             <Col className="dashboard">
               <Row>
-                <Button color="primary" onClick={toggle} className="addpaste">
-                  Add Paste
-                </Button>
-                <Table responsive>
+                <Col className="add">
+                  <Button color="primary" onClick={toggle} className="addpaste">
+                    Add Paste
+                  </Button>
+                </Col>
+                <Table bordered>
                   <thead className="tablehead">
                     <tr>
                       <th>No.</th>
                       <th>NAME</th>
-                      <th>ADDED</th>
+                      <th>Created_Date</th>
                       <th>EXPIRES</th>
                     </tr>
                   </thead>
@@ -402,7 +405,12 @@ const Dashboard = (props) => {
                           <th scope="row">{index + 1}</th>
 
                           <td>{item.title}</td>
-                          <td>{item.content}</td>
+                          <td>
+                            {" "}
+                            <Moment format="YYYY/MM/DD">
+                              {item.updated_at}
+                            </Moment>
+                          </td>
                           <td>{item.Expiration}</td>
                         </tr>
                       ))}

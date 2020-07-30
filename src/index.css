@@ -76,11 +76,10 @@ code {
 
 .dashboard {
   padding-top: 75px;
-
-  /* margin-left: 15%; */
-  width: 75%;
-  background-color: white;
   border: 1px solid lightgrey;
+  /* margin-left: 15%; */
+  /* width: 75%; */
+  background-color: white;
 }
 .tablehead {
   background-color: whitesmoke;
@@ -177,4 +176,6 @@ code {
   padding-left: 30px;
 }
 .navv {
+}
+.add {
 }

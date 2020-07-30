@@ -83,7 +83,7 @@ export const createPaste = ({ content, Expiration, Exposure, title }) => {
         dispatch({ type: "Createpaste_SUCCESS", stats: res.data.data });
         toast.success("Paste Created Successfully !", {
           position: "top-center",
-          autoClose: 2000,
+          autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
