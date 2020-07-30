@@ -3,8 +3,6 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Dashboard from "./Dashboard.js";
 import Login from "./Login.js";
 const AppRouter = () => {
-  var tokenn = localStorage.getItem("token");
-
   return (
     <BrowserRouter>
       <Switch>
