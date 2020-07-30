@@ -111,7 +111,7 @@ export const pasteList = () => {
       Authorization: `Bearer ${tokenn}`,
     },
   };
-  console.log(authtoken);
+
   return (dispatch) => {
     dispatch({ type: "Pastelist_PENDING" });
 
