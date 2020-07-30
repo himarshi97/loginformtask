@@ -1,19 +1,14 @@
 import React from "react";
 import { useForm, Controller } from "react-hook-form";
-import { Link, BrowserRouter as Router } from "react-router-dom";
-//import { ToastContainer, toast } from "react-toastify";
 import { Form, FormGroup, Input, Col, Container, Button } from "reactstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
-
 import "bootstrap/dist/css/bootstrap.min.css";
 import { yupResolver } from "@hookform/resolvers";
 import * as Yup from "yup";
 import { signinUser } from "../actions/action.js";
-
 import { Redirect } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+
 const schema = Yup.object().shape({
   identifier: Yup.string().required("name is a required field"),
   password: Yup.string().required("password is a required field"),
@@ -49,7 +44,6 @@ const Loginform = () => {
                     name="identifier"
                     defaultValue=""
                   />
-
                   {errors.identifier && (
                     <p className="text-danger">* {errors.identifier.message}</p>
                   )}
@@ -66,7 +60,6 @@ const Loginform = () => {
                     defaultValue=""
                     className="inputtext"
                   />
-
                   {errors.password && (
                     <p className="text-danger">* {errors.password.message}</p>
                   )}

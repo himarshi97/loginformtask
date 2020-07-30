@@ -1,8 +1,6 @@
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 export const signinUser = ({ identifier, password, history }) => {
-  let token;
-
   return (dispatch) => {
     dispatch({ type: "Signin_PENDING" });
 
@@ -35,9 +33,6 @@ export const signinUser = ({ identifier, password, history }) => {
 
         console.log("token", token);
         history.push("/dashboard");
-        // {
-        //   token ? history.push("/dashboard") : history.push("/");
-        // }
       })
 
       .catch((error) => {

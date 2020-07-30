@@ -1,4 +1,3 @@
-import { toast } from "react-toastify";
 const initialState = {
   stats: null,
   message: null,
