@@ -15,7 +15,20 @@ import {
   Label,
   Input,
   Row,
+  Container,
   Col,
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+  NavbarText,
 } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -50,6 +63,11 @@ const Dashboard = (props) => {
   const [modal, setModal] = useState(false);
 
   const toggle = () => setModal(!modal);
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const togle = () => setIsOpen(!isOpen);
+
   const { register, control, errors, handleSubmit } = useForm({
     resolver: yupResolver(FormSchema),
   });
@@ -85,58 +103,166 @@ const Dashboard = (props) => {
   console.log("username", username);
 
   return (
-    <div>
+    <>
       {tokenn ? (
         <>
-          <div className="modalll">
-            <div className="logodiv">
-              <img
-                src="https://i.pinimg.com/236x/07/11/74/071174ef23ecb6b7cba95f041f577141--best-games-free-games.jpg"
-                className="logo"
-              />
-            </div>
-
-            <div className="linkdiv">
-              <Link to="#" className="link" style={{ color: "white" }}>
-                Home
-              </Link>
-              <Link to="#" className="link" style={{ color: "white" }}>
-                Tools
-              </Link>
-              <Link to="#" className="link" style={{ color: "white" }}>
-                Paste
-              </Link>
-              <Link to="#" className="link" style={{ color: "white" }}>
-                Contact
-              </Link>
-              <Link to="#" className="link" style={{ color: "white" }}>
-                Gallary
-              </Link>
-            </div>
-
-            <div className="logout">
-              <Button onClick={logout} title="logout">
-                {/* Logout */}
-                <FontAwesomeIcon
-                  icon={faSignOutAlt}
-                  color="white"
-                  className="logouticon"
+          <Col>
+            <Row className="modalll">
+              <Navbar light expand="md" className="navbar">
+                <img
+                  src="https://i.pinimg.com/236x/07/11/74/071174ef23ecb6b7cba95f041f577141--best-games-free-games.jpg"
+                  className="logo"
                 />
-              </Button>
-            </div>
-            {
-              <div className="adminname">
-                {" "}
-                <FontAwesomeIcon
-                  icon={faUserCircle}
-                  color="white"
-                  className="usericon"
-                />
-                {username}
-              </div>
-            }
-          </div>
 
+                <Collapse
+                  isOpen={isOpen}
+                  navbar
+                  style={{
+                    backgroundColor: "darkblue",
+                  }}
+                >
+                  <Nav className="mr-auto" navbar>
+                    <NavItem>
+                      <NavLink href="/components/" style={{ color: "white" }}>
+                        Home
+                      </NavLink>
+                    </NavItem>
+                    <NavItem>
+                      <NavLink href="/components/" style={{ color: "white" }}>
+                        Paste
+                      </NavLink>
+                    </NavItem>
+                    <NavItem>
+                      <NavLink href="/components/" style={{ color: "white" }}>
+                        Tools
+                      </NavLink>
+                    </NavItem>
+                    <NavItem>
+                      <NavLink href="/components/" style={{ color: "white" }}>
+                        Contact
+                      </NavLink>
+                    </NavItem>
+                  </Nav>
+
+                  {
+                    <NavbarText
+                      className="adminname"
+                      style={{
+                        color: "white",
+                        marginRight: "5px",
+                        marginLeft: "15px",
+                      }}
+                    >
+                      <FontAwesomeIcon
+                        icon={faUserCircle}
+                        color="white"
+                        className="usericon"
+                      />
+                      {username}
+                    </NavbarText>
+                  }
+                  <Button
+                    onClick={logout}
+                    title="logout"
+                    style={{
+                      float: "right",
+                      marginRight: "25px",
+                    }}
+                  >
+                    <FontAwesomeIcon
+                      icon={faSignOutAlt}
+                      color="white"
+                      className="logouticon"
+                    />
+                  </Button>
+                </Collapse>
+                {/* <Row className="navv" sm="3"> */}
+                <NavbarToggler
+                  onClick={togle}
+                  style={{
+                    backgroundColor: "darkblue",
+                  }}
+                />
+                {/* </Row> */}
+              </Navbar>
+            </Row>
+          </Col>
+          {/* <Col>
+            <Row className="modalll">
+              <Col className="logodiv">
+                <img
+                  src="https://i.pinimg.com/236x/07/11/74/071174ef23ecb6b7cba95f041f577141--best-games-free-games.jpg"
+                  className="logo"
+                />
+              </Col> */}
+
+          {/* <Navbar light expand="md" className="navbar">
+                <Collapse isOpen={isOpen} navbar>
+                  <Col className="linkdiv" sm="7">
+                    <Nav className="mr-auto" navbar>
+                      <NavItem>
+                        <NavLink href="/components/" style={{ color: "white" }}>
+                          Home
+                        </NavLink>
+                      </NavItem>
+                      <NavItem>
+                        <NavLink href="/components/" style={{ color: "white" }}>
+                          Paste
+                        </NavLink>
+                      </NavItem>
+                      <NavItem>
+                        <NavLink href="/components/" style={{ color: "white" }}>
+                          Tools
+                        </NavLink>
+                      </NavItem>
+                    </Nav>
+                  </Col>
+                </Collapse>
+                <NavbarToggler onClick={togle} />
+              </Navbar> */}
+
+          {/* <Col className="linkdiv" sm="7">
+                <Link to="#" className="link" style={{ color: "white" }}>
+                  Home
+                </Link>
+                <Link to="#" className="link" style={{ color: "white" }}>
+                  Tools
+                </Link>
+                <Link to="#" className="link" style={{ color: "white" }}>
+                  Paste
+                </Link>
+                <Link to="#" className="link" style={{ color: "white" }}>
+                  Contact
+                </Link>
+                <Link to="#" className="link" style={{ color: "white" }}>
+                  Gallary
+                </Link>
+              </Col>
+
+              {
+                <Col className="adminname" sm="3">
+                  {" "}
+                  <FontAwesomeIcon
+                    icon={faUserCircle}
+                    color="white"
+                    className="usericon"
+                  />
+                  {username}
+                </Col>
+              }
+              <Col className="logout" sm="1">
+                <Button onClick={logout} title="logout">
+                 
+                  <FontAwesomeIcon
+                    icon={faSignOutAlt}
+                    color="white"
+                    className="logouticon"
+                  />
+                </Button>
+              </Col> */}
+          {/* </Row>
+          </Col>
+          <div></div> */}
           <div className="modall">
             <Modal isOpen={modal} toggle={toggle} className={modal}>
               <div className="modalbodyy">
@@ -248,49 +374,51 @@ const Dashboard = (props) => {
               </ModalFooter> */}
             </Modal>
           </div>
-          <div className="dashboard">
-            <Button color="primary" onClick={toggle} className="addpaste">
-              Add Paste
-            </Button>
-            <Table responsive>
-              <thead className="tablehead">
-                <tr>
-                  <th>No.</th>
-                  <th>NAME</th>
-                  <th>ADDED</th>
-                  <th>EXPIRES</th>
-                </tr>
-              </thead>
-              <tbody>
-                {/* {stats == null ? (
+          <Container>
+            <Col className="dashboard">
+              <Row>
+                <Button color="primary" onClick={toggle} className="addpaste">
+                  Add Paste
+                </Button>
+                <Table responsive>
+                  <thead className="tablehead">
+                    <tr>
+                      <th>No.</th>
+                      <th>NAME</th>
+                      <th>ADDED</th>
+                      <th>EXPIRES</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {/* {stats == null ? (
             <div>refresh page</div>
           ) : (
             <> */}
-                {list
-                  .slice(0)
-                  .reverse()
-                  .map((item, index) => (
-                    <tr key={index}>
-                      <th scope="row">{index + 1}</th>
+                    {list
+                      .slice(0)
+                      .reverse()
+                      .map((item, index) => (
+                        <tr key={index}>
+                          <th scope="row">{index + 1}</th>
 
-                      <td>{item.title}</td>
-                      <td>{item.content}</td>
-                      <td>{item.Expiration}</td>
-                    </tr>
-                  ))}
+                          <td>{item.title}</td>
+                          <td>{item.content}</td>
+                          <td>{item.Expiration}</td>
+                        </tr>
+                      ))}
 
-                {/* </>
+                    {/* </>
           )} */}
-              </tbody>
-            </Table>
-          </div>
+                  </tbody>
+                </Table>
+              </Row>
+            </Col>
+          </Container>
         </>
       ) : (
-        <div>
-          <Redirect to="/" />
-        </div>
+        <Redirect to="/" />
       )}
-    </div>
+    </>
   );
 };
 

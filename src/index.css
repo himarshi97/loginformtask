@@ -73,14 +73,12 @@ code {
   width: 40%;
   /* width: 70%; */
 }
-.formgroup {
-  border: 1px sold black;
-}
 
 .dashboard {
-  padding-top: 5px;
-  margin-left: 15%;
-  width: 70%;
+  padding-top: 75px;
+
+  /* margin-left: 15%; */
+  width: 75%;
   background-color: white;
   border: 1px solid lightgrey;
 }
@@ -88,8 +86,13 @@ code {
   background-color: whitesmoke;
 }
 .modalll {
-  border: 1px solid black;
+  width: 100%;
+  z-index: 1;
+  position: fixed;
+
   background-color: darkblue;
+}
+.nav {
 }
 .selected {
   height: 200px;
@@ -116,41 +119,62 @@ code {
   height: 100%;
 }
 .logo {
-  width: 80px;
-  height: 70px;
+  width: 90px;
+  height: 67px;
+  margin-left: -16px;
+  margin-top: -7px;
 }
 .addpaste {
   margin-left: 5px;
   margin-bottom: 5px;
 }
 .logodiv {
-  display: inline-block;
+  /* display: inline-block; */
 }
 .linkdiv {
+  /* margin-left: 15px; */
+  padding-top: 25px;
   color: white;
-  margin-left: 5px;
-  display: inline-block;
+
+  /* margin-left: 5px; */
+  /* display: inline-block; */
 }
 .link {
   padding-left: 30px;
 }
 .adminname {
-  display: inline-block;
-
-  float: right;
-  padding-top: 20px;
+  /* padding-top: 24px; */
   font-size: 20px;
   font-weight: bold;
-  margin-right: 25px;
+  margin-right: 10px;
+  /* text-align: right; */
   color: white;
 }
-
+.adminicon {
+  margin-left: 10px;
+  padding-top: 30px;
+}
 .logout {
-  padding-right: 15px;
-  padding-top: 15px;
-  float: right;
-  display: inline-block;
+  text-align: center;
+  margin-right: 5px;
+
+  /* margin-right: 20px; */
+  padding-top: 20px;
+  /* float: right;
+  display: inline-block; */
 }
 .usericon {
   margin-right: 5px;
+}
+.navbar {
+  width: 100%;
+  background-color: darkblue;
+  height: 70px;
+  border: 1px solid black;
+}
+.mr-auto {
+  margin-left: 15px;
+  padding-left: 30px;
+}
+.navv {
 }

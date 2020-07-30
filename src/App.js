@@ -4,7 +4,7 @@ import logo from "./logo.svg";
 import "./App.css";
 //import Login from "./components/Login.js";
 import AppRouter from "./components/Router.js";
-//import Dashboard from "./components/Dashboard.js";
+import Example from "./components/Navbar.js";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
@@ -18,6 +18,7 @@ function App() {
     <Provider store={store}>
       <div className="main">
         <AppRouter />
+
         <ToastContainer
           position="top-center"
           autoClose={5000}
