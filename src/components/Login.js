@@ -22,7 +22,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { yupResolver } from "@hookform/resolvers";
 import * as Yup from "yup";
 import { signinUser } from "../actions/action.js";
-//import axios from "axios";
+
 import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -40,7 +40,7 @@ const Loginform = () => {
     dispatch(signinUser({ identifier, password, history }));
   };
   var tokenn = localStorage.getItem("token");
-  console.log(tokenn);
+
   return (
     <>
       {tokenn ? (

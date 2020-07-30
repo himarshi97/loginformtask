@@ -39,14 +39,9 @@ code {
 .form {
   display: inline-block;
   position: relative;
-  /* margin: auto;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0; */
 
   width: 350px;
-  /* height: 350px; */
+
   padding-top: 30px;
   background-color: white;
   border: 1px solid lightgrey;
@@ -60,25 +55,17 @@ code {
   text-align: center;
   padding-bottom: 10px;
 }
-.signin {
-  /* margin-left: 45px; */
-  /* border: 1px solid black; */
-  /* height: 50px;
-  width: 150px; */
-}
+
 .signbutton {
-  /* margin-left: 165px; */
   margin-bottom: 15px;
   margin-left: 30%;
   width: 40%;
-  /* width: 70%; */
 }
 
 .dashboard {
   padding-top: 75px;
   border: 1px solid lightgrey;
-  /* margin-left: 15%; */
-  /* width: 75%; */
+
   background-color: white;
 }
 .tablehead {
@@ -89,7 +76,7 @@ code {
   z-index: 1;
   position: fixed;
 
-  background-color: darkblue;
+  background-color: #154867;
 }
 .nav {
 }
@@ -105,48 +92,33 @@ code {
   margin-right: 5px;
 }
 .modal {
-  margin-top: 70px;
-  padding-left: 10px;
-  padding-right: 70px;
+  margin-top: 50px;
 }
-.modall {
-}
-.modalbodyy {
-  background-color: white;
-  margin: auto;
-  width: 115%;
-  height: 100%;
-}
+
 .logo {
   width: 90px;
-  height: 67px;
+  height: 68px;
   margin-left: -16px;
-  margin-top: -7px;
+  margin-top: -8px;
 }
 .addpaste {
   margin-left: 5px;
   margin-bottom: 5px;
 }
 .logodiv {
-  /* display: inline-block; */
 }
 .linkdiv {
-  /* margin-left: 15px; */
   padding-top: 25px;
   color: white;
-
-  /* margin-left: 5px; */
-  /* display: inline-block; */
 }
 .link {
   padding-left: 30px;
 }
 .adminname {
-  /* padding-top: 24px; */
   font-size: 20px;
   font-weight: bold;
   margin-right: 10px;
-  /* text-align: right; */
+
   color: white;
 }
 .adminicon {
@@ -157,25 +129,17 @@ code {
   text-align: center;
   margin-right: 5px;
 
-  /* margin-right: 20px; */
   padding-top: 20px;
-  /* float: right;
-  display: inline-block; */
 }
 .usericon {
   margin-right: 5px;
 }
 .navbar {
   width: 100%;
-  background-color: darkblue;
-  height: 70px;
-  border: 1px solid black;
+  background-color: #154867;
+  height: 69px;
 }
 .mr-auto {
   margin-left: 15px;
   padding-left: 30px;
-}
-.navv {
-}
-.add {
 }
