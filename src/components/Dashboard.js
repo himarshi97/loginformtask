@@ -38,7 +38,7 @@ import * as Yup from "yup";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Redirect, useHistory } from "react-router-dom";
-import Login from "./Login.js";
+
 const FormSchema = Yup.object().shape({
   content: Yup.string().required(),
   Expiration: Yup.string().required(),
@@ -100,7 +100,7 @@ const Dashboard = (props) => {
                 <NavbarToggler
                   onClick={togle}
                   style={{
-                    backgroundColor: "#154867 ",
+                    backgroundColor: "#154867",
                   }}
                 />
                 <Collapse

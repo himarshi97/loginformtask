@@ -2,19 +2,7 @@ import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import { Link, BrowserRouter as Router } from "react-router-dom";
 //import { ToastContainer, toast } from "react-toastify";
-import {
-  Form,
-  FormGroup,
-  ButtonToggle,
-  Label,
-  Input,
-  InputGroup,
-  InputGroupAddon,
-  Row,
-  Col,
-  Container,
-  Button,
-} from "reactstrap";
+import { Form, FormGroup, Input, Col, Container, Button } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
@@ -27,8 +15,8 @@ import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 const schema = Yup.object().shape({
-  identifier: Yup.string().trim().required(),
-  password: Yup.string().trim().required(),
+  identifier: Yup.string().required("name is a required field"),
+  password: Yup.string().required("password is a required field"),
 });
 const Loginform = () => {
   const { register, control, errors, handleSubmit } = useForm({
