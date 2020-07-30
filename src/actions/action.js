@@ -12,7 +12,7 @@ export const signinUser = ({ identifier, password, history }) => {
 
       .then((res) => {
         dispatch({ type: "Signin_SUCCESS", stats: res.data.data });
-        console.log(res);
+
         toast.success("Login Success !", {
           position: "top-center",
           autoClose: 2000,
@@ -24,14 +24,13 @@ export const signinUser = ({ identifier, password, history }) => {
         });
 
         localStorage.setItem("token", (token = res.data.jwt));
-        console.log("token", token);
+
         localStorage.setItem("username", (username = res.data.user.username));
-        console.log("username", username);
+
         var username = localStorage.getItem("username");
-        console.log("username", username);
+
         var token = localStorage.getItem("token");
 
-        console.log("token", token);
         history.push("/dashboard");
       })
 
@@ -51,14 +50,13 @@ export const signinUser = ({ identifier, password, history }) => {
   };
 };
 export const createPaste = ({ content, Expiration, Exposure, title }) => {
-  console.log(content, Expiration, Exposure, title);
   const tokenn = localStorage.getItem("token");
   const authtoken = {
     headers: {
       Authorization: `Bearer ${tokenn}`,
     },
   };
-  console.log(authtoken);
+
   return (dispatch) => {
     dispatch({ type: "Createpaste_PENDING" });
 
@@ -86,11 +84,9 @@ export const createPaste = ({ content, Expiration, Exposure, title }) => {
           progress: undefined,
         });
         window.location.reload();
-        console.log(res);
       })
 
       .catch((error) => {
-        console.log(error);
         dispatch({ type: "Createpaste_FAILURE", message: error.response });
         toast.error("paste not created", {
           position: "top-center",
@@ -120,11 +116,9 @@ export const pasteList = () => {
 
       .then((res) => {
         dispatch({ type: "Pastelist_SUCCESS", list: res.data });
-        console.log(res);
       })
 
       .catch((error) => {
-        console.log(error);
         dispatch({ type: "Pastelist_FAILURE", message: error.response });
         toast.warn("try to login again !", {
           position: "top-center",
