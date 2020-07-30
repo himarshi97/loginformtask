@@ -143,28 +143,3 @@ export const pasteList = () => {
       });
   };
 };
-export const admin = () => {
-  const tokenn = localStorage.getItem("token");
-  const authtoken = {
-    headers: {
-      Authorization: `Bearer ${tokenn}`,
-    },
-  };
-  console.log(authtoken);
-  return (dispatch) => {
-    dispatch({ type: "Admin_PENDING" });
-
-    axios
-      .get("https://pastebindemo.herokuapp.com/auth/local", authtoken)
-
-      .then((res) => {
-        dispatch({ type: "Admin_SUCCESS", list: res.data.data });
-        console.log(res);
-      })
-
-      .catch((error) => {
-        console.log(error);
-        dispatch({ type: "Admin_FAILURE", message: error.response });
-      });
-  };
-};

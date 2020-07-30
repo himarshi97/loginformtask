@@ -9,7 +9,6 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
-  ModalFooter,
   Form,
   FormGroup,
   Label,
@@ -133,7 +132,6 @@ const Dashboard = (props) => {
                       </NavLink>
                     </NavItem>
                   </Nav>
-
                   {
                     <NavbarText
                       className="adminname"
@@ -268,46 +266,41 @@ const Dashboard = (props) => {
               </Form>
             </ModalBody>
           </Modal>
-
           <Container>
-            <Col className="dashboard">
-              <Row>
-                <Col className="add">
-                  <Button color="primary" onClick={toggle} className="addpaste">
-                    Add Paste
-                  </Button>
-                </Col>
-                <Table bordered>
-                  <thead className="tablehead">
-                    <tr>
-                      <th>No.</th>
-                      <th>NAME</th>
-                      <th>Created_Date</th>
-                      <th>EXPIRES</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {list
-                      .slice(0)
-                      .reverse()
-                      .map((item, index) => (
-                        <tr key={index}>
-                          <th scope="row">{index + 1}</th>
+            <Row className="dashboard">
+              <Col className="add">
+                <Button color="primary" onClick={toggle} className="addpaste">
+                  Add Paste
+                </Button>
+              </Col>
+              <Table bordered>
+                <thead className="tablehead">
+                  <tr>
+                    <th>No.</th>
+                    <th>NAME</th>
+                    <th>Created_Date</th>
+                    <th>EXPIRES</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {list
+                    .slice(0)
+                    .reverse()
+                    .map((item, index) => (
+                      <tr key={index}>
+                        <th scope="row">{index + 1}</th>
 
-                          <td>{item.title}</td>
-                          <td>
-                            {" "}
-                            <Moment format="YYYY/MM/DD">
-                              {item.updated_at}
-                            </Moment>
-                          </td>
-                          <td>{item.Expiration}</td>
-                        </tr>
-                      ))}
-                  </tbody>
-                </Table>
-              </Row>
-            </Col>
+                        <td>{item.title}</td>
+                        <td>
+                          {" "}
+                          <Moment format="YYYY/MM/DD">{item.updated_at}</Moment>
+                        </td>
+                        <td>{item.Expiration}</td>
+                      </tr>
+                    ))}
+                </tbody>
+              </Table>
+            </Row>
           </Container>
         </>
       ) : (

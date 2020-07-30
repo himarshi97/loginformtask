@@ -81,29 +81,6 @@ const LoginReducers = (state = initialState, action) => {
         error: true,
         message: action.message,
       };
-    case "Admin_PENDING":
-      return {
-        ...state,
-
-        error: false,
-        message: null,
-      };
-    case "Admin_SUCCESS":
-      return {
-        ...state,
-
-        error: false,
-
-        message: null,
-        list: action.list,
-      };
-    case "Admin_FAILURE":
-      return {
-        ...state,
-
-        error: true,
-        message: action.message,
-      };
 
     default:
       return { ...state };

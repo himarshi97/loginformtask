@@ -63,10 +63,13 @@ code {
 }
 
 .dashboard {
-  padding-top: 75px;
-  border: 1px solid lightgrey;
+  padding-top: 69px;
+  /* border: 1px solid lightgrey; */
 
   background-color: white;
+}
+.add {
+  padding-top: 5px;
 }
 .tablehead {
   background-color: whitesmoke;
@@ -142,4 +145,7 @@ code {
 .mr-auto {
   margin-left: 15px;
   padding-left: 30px;
+}
+.tab {
+  width: 60%;
 }
