@@ -73,6 +73,7 @@ const LoginReducers = (state = initialState, action) => {
         message: null,
         list: action.list,
       };
+
     case "Pastelist_FAILURE":
       return {
         ...state,

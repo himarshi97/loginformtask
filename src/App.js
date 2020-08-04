@@ -1,17 +1,9 @@
 import React from "react";
-import logo from "./logo.svg";
-
 import "./App.css";
-
 import AppRouter from "./components/Router.js";
-
 import { Provider } from "react-redux";
-import { createStore, applyMiddleware } from "redux";
-import thunk from "redux-thunk";
-import LoginReducers from "./allreducers/Rootreducer";
-import { ToastContainer, toast } from "react-toastify";
-
-const store = createStore(LoginReducers, applyMiddleware(thunk));
+import { ToastContainer } from "react-toastify";
+import store from "./store/Store.js";
 
 function App() {
   return (

@@ -63,7 +63,6 @@ code {
 }
 
 .dashboard {
-  padding-top: 69px;
   /* border: 1px solid lightgrey; */
 
   background-color: white;
@@ -101,11 +100,13 @@ code {
 .logo {
   width: 90px;
   height: 68px;
-  margin-left: -16px;
-  margin-top: -8px;
+
+  /* margin-left: -16px;
+  margin-top: -8px; */
 }
 .addpaste {
-  margin-left: 5px;
+  border: 1px solid black;
+  margin-top: 5px;
   margin-bottom: 5px;
 }
 .logodiv {
@@ -139,8 +140,9 @@ code {
 }
 .navbar {
   width: 100%;
+
   background-color: #154867;
-  height: 69px;
+  /* height: 69px; */
 }
 .mr-auto {
   margin-left: 15px;
@@ -148,4 +150,11 @@ code {
 }
 .tab {
   width: 60%;
+}
+.linkcolor {
+  padding: 10px;
+  color: white;
+}
+td {
+  word-break: break-all;
 }

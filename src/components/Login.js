@@ -22,7 +22,7 @@ const Loginform = () => {
   const onSubmit = ({ identifier, password }) => {
     dispatch(signinUser({ identifier, password, history }));
   };
-  var tokenn = localStorage.getItem("token");
+  const tokenn = localStorage.getItem("token");
 
   return (
     <>

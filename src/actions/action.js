@@ -23,13 +23,9 @@ export const signinUser = ({ identifier, password, history }) => {
           progress: undefined,
         });
 
-        localStorage.setItem("token", (token = res.data.jwt));
+        localStorage.setItem("token", res.data.jwt);
 
-        localStorage.setItem("username", (username = res.data.user.username));
-
-        var username = localStorage.getItem("username");
-
-        var token = localStorage.getItem("token");
+        localStorage.setItem("username", res.data.user.username);
 
         history.push("/dashboard");
       })
@@ -83,7 +79,6 @@ export const createPaste = ({ content, Expiration, Exposure, title }) => {
           draggable: true,
           progress: undefined,
         });
-        window.location.reload();
       })
 
       .catch((error) => {
@@ -116,6 +111,7 @@ export const pasteList = () => {
 
       .then((res) => {
         dispatch({ type: "Pastelist_SUCCESS", list: res.data });
+        console.log(res.data);
       })
 
       .catch((error) => {
