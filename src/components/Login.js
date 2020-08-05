@@ -1,7 +1,6 @@
 import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import { Form, FormGroup, Input, Col, Container, Button } from "reactstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { yupResolver } from "@hookform/resolvers";
 import * as Yup from "yup";
 import { signinUser } from "../actions/Loginaction.js";
@@ -31,7 +30,7 @@ const Loginform = () => {
       ) : (
         <Col className="home">
           <Col className="form" sm="5">
-            <Col className="logintitle">Login</Col>
+            <Col className="heading">Login</Col>
             <hr />
             <Container>
               <Form onSubmit={handleSubmit(onSubmit)}>
@@ -49,7 +48,7 @@ const Loginform = () => {
                   )}
                 </FormGroup>
 
-                <FormGroup className="formgroup">
+                <FormGroup>
                   <Controller
                     placeholder="Enter Password"
                     as={Input}
@@ -58,7 +57,6 @@ const Loginform = () => {
                     control={control}
                     name="password"
                     defaultValue=""
-                    className="inputtext"
                   />
                   {errors.password && (
                     <p className="text-danger">* {errors.password.message}</p>

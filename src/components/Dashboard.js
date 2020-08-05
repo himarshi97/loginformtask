@@ -272,6 +272,7 @@ const Dashboard = (props) => {
                       </thead>
                       <tbody>
                         {list
+                          .slice(0)
                           .sort(
                             (item, index) =>
                               new Date(index.created_at) -
