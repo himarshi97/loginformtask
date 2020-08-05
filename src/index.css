@@ -39,9 +39,7 @@ code {
 .form {
   display: inline-block;
   position: relative;
-
   width: 350px;
-
   padding-top: 30px;
   background-color: white;
   border: 1px solid lightgrey;
@@ -84,9 +82,6 @@ code {
 }
 .selected {
   height: 200px;
-  overflow: scroll;
-}
-.inputtext {
   overflow: scroll;
 }
 

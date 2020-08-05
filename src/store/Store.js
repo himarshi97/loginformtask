@@ -2,13 +2,12 @@ import { combineReducers, createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 
 import LoginReducers from "../allreducers/Loginreducer.js";
-import CreatePastereducers from "../allreducers/Createpastereducer.js";
-import ViewPastereducers from "../allreducers/Viewpastereducer.js";
+
+import Pastereducers from "../allreducers/Pastereducer.js";
 
 const rootReducer = combineReducers({
   LoginReducers,
-  CreatePastereducers,
-  ViewPastereducers,
+  Pastereducers,
 });
 const store = createStore(rootReducer, applyMiddleware(thunk));
 

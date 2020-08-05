@@ -58,8 +58,8 @@ const Dashboard = (props) => {
     resolver: yupResolver(FormSchema),
   });
   const { loading, list } = useSelector((state) => ({
-    loading: state.ViewPastereducers.loading,
-    list: state.ViewPastereducers.list,
+    loading: state.Pastereducers.loading,
+    list: state.Pastereducers.list,
   }));
 
   const dispatch = useDispatch();
