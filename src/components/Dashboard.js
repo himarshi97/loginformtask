@@ -13,8 +13,6 @@ import {
   FormGroup,
   Label,
   Input,
-  Row,
-  Container,
   Col,
   Collapse,
   Navbar,
@@ -37,7 +35,7 @@ import { yupResolver } from "@hookform/resolvers";
 import * as Yup from "yup";
 
 import "react-toastify/dist/ReactToastify.css";
-import { Redirect, useHistory, Link } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 
 const FormSchema = Yup.object().shape({
   content: Yup.string().required(),
@@ -89,18 +87,6 @@ const Dashboard = (props) => {
     }
   };
   const username = localStorage.getItem("username");
-
-  // let created_at = null;
-  // const Dat = list.sort((a, b) => {
-  //   return new Dat(b.created_at) - new Dat(a.created_at);
-  // });
-  // console.log(Dat);
-  // Dat.map((item, index) => {
-  //   if (created_at !== new Dat(item.created_at).toLocaleDateString()) {
-  //     console.log(item.created_at);
-  //     created_at = new Dat(item.created_at).toLocaleDateString();
-  //   }
-  //});
 
   return (
     <>
@@ -159,53 +145,6 @@ const Dashboard = (props) => {
             </Collapse>
           </Navbar>
 
-          {/* <Row classname="modalll">
-          <Navbar light expand="md" className="navbarr">
-            <NavbarBrand>
-              <img
-                src="https://upload.wikimedia.org/wikipedia/en/3/35/Pastebin.com_logo.png"
-                alt=""
-                className="logo"
-              />
-            </NavbarBrand>
-
-            <NavbarToggler onClick={togle} />
-            <Collapse isOpen={isOpen} navbar>
-              <Nav className="mr-auto" navbar>
-                <Link to="/" className="linkcolor">
-                  Home
-                </Link>
-
-                <Link to="/" className="linkcolor">
-                  Paste
-                </Link>
-                <Link to="/" className="linkcolor">
-                  Tools
-                </Link>
-                <Link to="/" className="linkcolor">
-                  Contact
-                </Link>
-              </Nav>
-              {
-                <NavbarText className="adminname text-white">
-                  <FontAwesomeIcon
-                    icon={faUserCircle}
-                    color="white"
-                    className="usericon"
-                  />
-                  {username}
-                </NavbarText>
-              }
-              <Button onClick={logout} title="logout" className="loggut">
-                <FontAwesomeIcon
-                  icon={faSignOutAlt}
-                  color="white"
-                  className="logouticon"
-                />
-              </Button>
-            </Collapse>
-          </Navbar>
-        </Row> */}
           <Modal isOpen={modal} toggle={toggle} className={className}>
             <ModalHeader toggle={toggle}>Create Paste</ModalHeader>
             <ModalBody>

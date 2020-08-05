@@ -2,7 +2,6 @@ const initialState = {
   stats: null,
   message: null,
   error: false,
-  list: [],
 };
 
 const CreatePastereducers = (state = initialState, action) => {

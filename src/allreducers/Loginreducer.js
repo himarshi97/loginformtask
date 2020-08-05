@@ -1,5 +1,5 @@
 const initialState = {
-  stats: null,
+  login: null,
   message: null,
   error: false,
 };
@@ -12,7 +12,7 @@ const LoginReducers = (state = initialState, action) => {
 
         error: false,
         message: null,
-        stats: null,
+        login: null,
       };
     case "SIGN_IN_SUCCESS":
       return {
@@ -21,7 +21,7 @@ const LoginReducers = (state = initialState, action) => {
         error: false,
 
         message: null,
-        stats: action.stats,
+        login: action.login,
       };
     case "SIGN_IN_FAILURE":
       return {
@@ -29,7 +29,7 @@ const LoginReducers = (state = initialState, action) => {
 
         error: true,
         message: action.message,
-        stats: null,
+        login: null,
       };
 
     default:

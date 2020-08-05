@@ -11,7 +11,7 @@ export const signinUser = ({ identifier, password, history }) => {
       })
 
       .then((res) => {
-        dispatch({ type: "SIGN_IN_SUCCESS", stats: res.data.data });
+        dispatch({ type: "SIGN_IN_SUCCESS", login: res.data.data });
 
         toast.success("Login Success", {
           position: "top-center",
@@ -31,7 +31,7 @@ export const signinUser = ({ identifier, password, history }) => {
       })
 
       .catch((error) => {
-        dispatch({ type: "SIGN_IN_FAILURE", message: error.response });
+        dispatch({ type: "SIGN_IN_FAILURE", message: error });
         toast.error("Login Error", {
           position: "top-center",
           autoClose: 5000,
@@ -82,7 +82,7 @@ export const createPaste = ({ content, Expiration, Exposure, title }) => {
       })
 
       .catch((error) => {
-        dispatch({ type: "CREATE_PASTE_FAILURE", message: error.response });
+        dispatch({ type: "CREATE_PASTE_FAILURE", message: error });
         toast.error("paste not created", {
           position: "top-center",
           autoClose: 5000,
@@ -114,7 +114,7 @@ export const pasteList = () => {
       })
 
       .catch((error) => {
-        dispatch({ type: "PASTE_LIST_FAILURE", message: error.response });
+        dispatch({ type: "PASTE_LIST_FAILURE", message: error });
 
         toast.warn("try to login again", {
           position: "top-center",
