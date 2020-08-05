@@ -2,7 +2,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 export const signinUser = ({ identifier, password, history }) => {
   return (dispatch) => {
-    dispatch({ type: "Signin_PENDING" });
+    dispatch({ type: "SIGN_IN_PENDING" });
 
     axios
       .post("https://pastebindemo.herokuapp.com/auth/local", {
@@ -11,11 +11,11 @@ export const signinUser = ({ identifier, password, history }) => {
       })
 
       .then((res) => {
-        dispatch({ type: "Signin_SUCCESS", stats: res.data.data });
+        dispatch({ type: "SIGN_IN_SUCCESS", stats: res.data.data });
 
-        toast.success("Login Success !", {
+        toast.success("Login Success", {
           position: "top-center",
-          autoClose: 2000,
+          autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -31,10 +31,10 @@ export const signinUser = ({ identifier, password, history }) => {
       })
 
       .catch((error) => {
-        dispatch({ type: "Signin_FAILURE", message: error.response });
-        toast.error("Login Error !", {
+        dispatch({ type: "SIGN_IN_FAILURE", message: error.response });
+        toast.error("Login Error", {
           position: "top-center",
-          autoClose: 2000,
+          autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -54,7 +54,7 @@ export const createPaste = ({ content, Expiration, Exposure, title }) => {
   };
 
   return (dispatch) => {
-    dispatch({ type: "Createpaste_PENDING" });
+    dispatch({ type: "CREATE_PASTE_PENDING" });
 
     axios
       .post(
@@ -69,8 +69,8 @@ export const createPaste = ({ content, Expiration, Exposure, title }) => {
       )
 
       .then((res) => {
-        dispatch({ type: "Createpaste_SUCCESS", stats: res.data.data });
-        toast.success("Paste Created Successfully !", {
+        dispatch({ type: "CREATE_PASTE_SUCCESS", stats: res.data.data });
+        toast.success("Paste Created Successfully", {
           position: "top-center",
           autoClose: 5000,
           hideProgressBar: false,
@@ -82,10 +82,10 @@ export const createPaste = ({ content, Expiration, Exposure, title }) => {
       })
 
       .catch((error) => {
-        dispatch({ type: "Createpaste_FAILURE", message: error.response });
+        dispatch({ type: "CREATE_PASTE_FAILURE", message: error.response });
         toast.error("paste not created", {
           position: "top-center",
-          autoClose: 2000,
+          autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -104,19 +104,19 @@ export const pasteList = () => {
   };
 
   return (dispatch) => {
-    dispatch({ type: "Pastelist_PENDING" });
+    dispatch({ type: "PASTE_LIST_PENDING" });
 
     axios
       .get("https://pastebindemo.herokuapp.com/pastes", authtoken)
 
       .then((res) => {
-        dispatch({ type: "Pastelist_SUCCESS", list: res.data });
-        console.log(res.data);
+        dispatch({ type: "PASTE_LIST_SUCCESS", list: res.data });
       })
 
       .catch((error) => {
-        dispatch({ type: "Pastelist_FAILURE", message: error.response });
-        toast.warn("try to login again !", {
+        dispatch({ type: "PASTE_LIST_FAILURE", message: error.response });
+
+        toast.warn("try to login again", {
           position: "top-center",
           autoClose: 2000,
           hideProgressBar: false,

@@ -2,18 +2,17 @@ const initialState = {
   loading: false,
   message: null,
   error: false,
-  list: null,
+  list: [],
 };
 
-const Viewpastereducer = (state = initialState, action) => {
+const ViewPastereducers = (state = initialState, action) => {
   switch (action.type) {
-    case "Pastelist_PENDING":
+    case "PASTE_LIST_PENDING":
       return {
         ...state,
         loading: true,
-        list: null,
       };
-    case "Pastelist_SUCCESS":
+    case "PASTE_LIST_SUCCESS":
       return {
         ...state,
         loading: false,
@@ -21,7 +20,7 @@ const Viewpastereducer = (state = initialState, action) => {
         list: action.list,
       };
 
-    case "Pastelist_FAILURE":
+    case "PASTE_LIST_FAILURE":
       return {
         ...state,
         loading: false,
@@ -33,4 +32,4 @@ const Viewpastereducer = (state = initialState, action) => {
       return { ...state };
   }
 };
-export default Viewpastereducer;
+export default ViewPastereducers;

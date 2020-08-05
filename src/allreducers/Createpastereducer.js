@@ -5,9 +5,9 @@ const initialState = {
   list: [],
 };
 
-const Createpastereducer = (state = initialState, action) => {
+const CreatePastereducers = (state = initialState, action) => {
   switch (action.type) {
-    case "Createpaste_PENDING":
+    case "CREATE_PASTE_PENDING":
       return {
         ...state,
 
@@ -15,7 +15,7 @@ const Createpastereducer = (state = initialState, action) => {
         message: null,
         stats: null,
       };
-    case "Createpaste_SUCCESS":
+    case "CREATE_PASTE_SUCCESS":
       return {
         ...state,
 
@@ -24,7 +24,7 @@ const Createpastereducer = (state = initialState, action) => {
         message: null,
         stats: action.stats,
       };
-    case "Createpaste_FAILURE":
+    case "CREATE_PASTE_FAILURE":
       return {
         ...state,
 
@@ -37,4 +37,4 @@ const Createpastereducer = (state = initialState, action) => {
       return { ...state };
   }
 };
-export default Createpastereducer;
+export default CreatePastereducers;

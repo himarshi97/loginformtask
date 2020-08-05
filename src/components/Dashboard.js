@@ -60,10 +60,10 @@ const Dashboard = (props) => {
     resolver: yupResolver(FormSchema),
   });
   const { loading, list } = useSelector((state) => ({
-    loading: state.LoginReducers.loading,
-    list: state.LoginReducers.list,
+    loading: state.ViewPastereducers.loading,
+    list: state.ViewPastereducers.list,
   }));
-  console.log(list);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(pasteList());
@@ -90,25 +90,78 @@ const Dashboard = (props) => {
   };
   const username = localStorage.getItem("username");
 
-  let created_at = null;
-  const ordenarPorFecha = list.sort((a, b) => {
-    return new Date(b.created_at) - new Date(a.created_at);
-  });
-  console.log(ordenarPorFecha);
-  ordenarPorFecha.map((item, index) => {
-    if (created_at !== new Date(item.created_at).toLocaleDateString()) {
-      console.log(item.created_at);
-      created_at = new Date(item.created_at).toLocaleDateString();
-    }
-  });
+  // let created_at = null;
+  // const Dat = list.sort((a, b) => {
+  //   return new Dat(b.created_at) - new Dat(a.created_at);
+  // });
+  // console.log(Dat);
+  // Dat.map((item, index) => {
+  //   if (created_at !== new Dat(item.created_at).toLocaleDateString()) {
+  //     console.log(item.created_at);
+  //     created_at = new Dat(item.created_at).toLocaleDateString();
+  //   }
+  //});
 
   return (
     <>
       {tokenn ? (
         <>
-          <Navbar light expand="md" className="navbar">
+          <Navbar light expand="md" className="navcolor">
+            <NavbarBrand href="/">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/en/3/35/Pastebin.com_logo.png"
+                alt=""
+                className="logo"
+              />
+            </NavbarBrand>
+            <NavbarToggler onClick={togle} />
+            <Collapse isOpen={isOpen} navbar>
+              <Nav className="mr-auto" navbar>
+                <NavItem>
+                  <NavLink href="/" className="text-white">
+                    Home
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink href="/" className="text-white">
+                    Paste
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink href="/" className="text-white">
+                    Tools
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink href="/" className="text-white">
+                    Contact
+                  </NavLink>
+                </NavItem>
+              </Nav>
+              {
+                <NavbarText className="adminname text-white">
+                  {" "}
+                  <FontAwesomeIcon
+                    icon={faUserCircle}
+                    color="white"
+                    className="usericon"
+                  />
+                  {username}
+                </NavbarText>
+              }
+              <Button onClick={logout} title="logout" className="loggut">
+                <FontAwesomeIcon
+                  icon={faSignOutAlt}
+                  color="white"
+                  className="logouticon"
+                />
+              </Button>
+            </Collapse>
+          </Navbar>
+
+          {/* <Row classname="modalll">
+          <Navbar light expand="md" className="navbarr">
             <NavbarBrand>
-              {" "}
               <img
                 src="https://upload.wikimedia.org/wikipedia/en/3/35/Pastebin.com_logo.png"
                 alt=""
@@ -116,7 +169,7 @@ const Dashboard = (props) => {
               />
             </NavbarBrand>
 
-            <NavbarToggler onClick={togle} className="mr-2" />
+            <NavbarToggler onClick={togle} />
             <Collapse isOpen={isOpen} navbar>
               <Nav className="mr-auto" navbar>
                 <Link to="/" className="linkcolor">
@@ -134,14 +187,7 @@ const Dashboard = (props) => {
                 </Link>
               </Nav>
               {
-                <NavbarText
-                  className="adminname"
-                  style={{
-                    color: "white",
-                    marginRight: "5px",
-                    marginLeft: "15px",
-                  }}
-                >
+                <NavbarText className="adminname text-white">
                   <FontAwesomeIcon
                     icon={faUserCircle}
                     color="white"
@@ -150,14 +196,7 @@ const Dashboard = (props) => {
                   {username}
                 </NavbarText>
               }
-              <Button
-                onClick={logout}
-                title="logout"
-                style={{
-                  float: "right",
-                  marginRight: "25px",
-                }}
-              >
+              <Button onClick={logout} title="logout" className="loggut">
                 <FontAwesomeIcon
                   icon={faSignOutAlt}
                   color="white"
@@ -166,7 +205,7 @@ const Dashboard = (props) => {
               </Button>
             </Collapse>
           </Navbar>
-
+        </Row> */}
           <Modal isOpen={modal} toggle={toggle} className={className}>
             <ModalHeader toggle={toggle}>Create Paste</ModalHeader>
             <ModalBody>
@@ -279,14 +318,13 @@ const Dashboard = (props) => {
 
             <>
               {loading ? (
-                <div> loading....</div>
+                <Col className="load"> loading...</Col>
               ) : (
                 <>
                   {list !== null && (
-                    <Table bordered>
+                    <Table bordered responsive>
                       <thead className="tablehead">
                         <tr>
-                          <th>No.</th>
                           <th>Content</th>
                           <th>EXPIRES</th>
                           <th>Exposure</th>
@@ -295,21 +333,26 @@ const Dashboard = (props) => {
                         </tr>
                       </thead>
                       <tbody>
-                        {list.map((item, index) => (
-                          <tr key={index}>
-                            <th scope="row">{index + 1}</th>
-                            <td>{item.content}</td>
-                            <td>{item.Expiration}</td>
-                            <td>{item.Exposure}</td>
-                            <td>{item.title}</td>
-                            <td>
-                              {" "}
-                              <Moment format="YYYY/MM/DD">
-                                {item.updated_at}
-                              </Moment>
-                            </td>
-                          </tr>
-                        ))}
+                        {list
+                          .sort(
+                            (item, index) =>
+                              new Date(index.created_at) -
+                              new Date(item.created_at)
+                          )
+                          .map((item, index) => (
+                            <tr>
+                              <td>{item.content}</td>
+                              <td>{item.Expiration}</td>
+                              <td>{item.Exposure}</td>
+                              <td>{item.title}</td>
+                              <td>
+                                {" "}
+                                <Moment format="YYYY/MM/DD">
+                                  {item.updated_at}
+                                </Moment>
+                              </td>
+                            </tr>
+                          ))}
                       </tbody>
                     </Table>
                   )}
