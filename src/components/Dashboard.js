@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
-import { createPaste, pasteList } from "../actions/action.js";
+import { createPaste, pasteList } from "../actions/Pasteaction.js";
 import { useDispatch, useSelector } from "react-redux";
 import Moment from "react-moment";
 import {
