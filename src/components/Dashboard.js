@@ -52,7 +52,7 @@ const Dashboard = (props) => {
 
   const [isOpen, setIsOpen] = useState(false);
 
-  const togle = () => setIsOpen(!isOpen);
+  const pastetoggle = () => setIsOpen(!isOpen);
 
   const { register, control, errors, handleSubmit } = useForm({
     resolver: yupResolver(FormSchema),
@@ -100,7 +100,7 @@ const Dashboard = (props) => {
                 className="logo"
               />
             </NavbarBrand>
-            <NavbarToggler onClick={togle} />
+            <NavbarToggler onClick={pastetoggle} />
             <Collapse isOpen={isOpen} navbar>
               <Nav className="mr-auto" navbar>
                 <NavItem>
