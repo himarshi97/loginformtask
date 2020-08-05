@@ -10,8 +10,8 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 const schema = Yup.object().shape({
-  identifier: Yup.string().required("name is a required field"),
-  password: Yup.string().required("password is a required field"),
+  identifier: Yup.string().required("Name is a required field"),
+  password: Yup.string().required("Password is a required field"),
 });
 const Loginform = () => {
   const { register, control, errors, handleSubmit } = useForm({

@@ -38,10 +38,10 @@ import "react-toastify/dist/ReactToastify.css";
 import { Redirect, useHistory } from "react-router-dom";
 
 const FormSchema = Yup.object().shape({
-  content: Yup.string().required(),
+  content: Yup.string().required("Content is a required field"),
   Expiration: Yup.string().required(),
   Exposure: Yup.string().required(),
-  title: Yup.string().required(),
+  title: Yup.string().required("Name/Title is a required field"),
 });
 const Dashboard = (props) => {
   const { className } = props;
@@ -126,7 +126,6 @@ const Dashboard = (props) => {
               </Nav>
               {
                 <NavbarText className="adminname text-white">
-                  {" "}
                   <FontAwesomeIcon
                     icon={faUserCircle}
                     color="white"
@@ -261,14 +260,14 @@ const Dashboard = (props) => {
               ) : (
                 <>
                   {list !== null && (
-                    <Table bordered responsive>
+                    <Table bordered responsive className="tabell">
                       <thead className="tablehead">
                         <tr>
                           <th>Content</th>
-                          <th>EXPIRES</th>
+                          <th>Expiration</th>
                           <th>Exposure</th>
-                          <th>NAME/Title</th>
-                          <th>Created_Date</th>
+                          <th>Name</th>
+                          <th>Date</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -279,14 +278,13 @@ const Dashboard = (props) => {
                               new Date(item.created_at)
                           )
                           .map((item, index) => (
-                            <tr>
+                            <tr key={index}>
                               <td>{item.content}</td>
                               <td>{item.Expiration}</td>
                               <td>{item.Exposure}</td>
                               <td>{item.title}</td>
                               <td>
-                                {" "}
-                                <Moment format="YYYY/MM/DD">
+                                <Moment format="Do MMM YY">
                                   {item.updated_at}
                                 </Moment>
                               </td>

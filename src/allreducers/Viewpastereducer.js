@@ -1,6 +1,5 @@
 const initialState = {
   loading: false,
-  message: null,
   error: false,
   list: null,
 };
@@ -12,13 +11,11 @@ const ViewPastereducers = (state = initialState, action) => {
         ...state,
         loading: true,
         list: null,
-        message: null,
       };
     case "PASTE_LIST_SUCCESS":
       return {
         ...state,
         loading: false,
-        message: null,
         list: action.list,
       };
 
@@ -28,7 +25,6 @@ const ViewPastereducers = (state = initialState, action) => {
         loading: false,
         list: null,
         error: true,
-        message: action.message,
       };
 
     default:
