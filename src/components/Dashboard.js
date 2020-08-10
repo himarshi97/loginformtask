@@ -37,7 +37,7 @@ import * as Yup from "yup";
 import "react-toastify/dist/ReactToastify.css";
 import { Redirect, useHistory } from "react-router-dom";
 
-const FormSchema = Yup.object().shape({
+const formSchema = Yup.object().shape({
   content: Yup.string().required("Content is a required field"),
   Expiration: Yup.string().required(),
   Exposure: Yup.string().required(),
@@ -55,7 +55,7 @@ const Dashboard = (props) => {
   const pastetoggle = () => setIsOpen(!isOpen);
 
   const { register, control, errors, handleSubmit } = useForm({
-    resolver: yupResolver(FormSchema),
+    resolver: yupResolver(formSchema),
   });
   const { loading, list } = useSelector((state) => ({
     loading: state.Pastereducers.loading,
@@ -63,16 +63,14 @@ const Dashboard = (props) => {
   }));
 
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(pasteList());
-  }, [dispatch, state]);
 
   const onSubmit = ({ content, Expiration, Exposure, title }) => {
-    setstate(false);
-    dispatch(createPaste({ content, Expiration, Exposure, title }));
-    toggle();
-    setstate(true);
+    dispatch(createPaste({ content, Expiration, Exposure, title, setModal }));
+    dispatch(pasteList(list));
   };
+  useEffect(() => {
+    dispatch(pasteList());
+  }, [dispatch]);
 
   let history = useHistory();
   const tokenn = localStorage.getItem("token");

@@ -1,7 +1,14 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 
-export const createPaste = ({ content, Expiration, Exposure, title }) => {
+export const createPaste = ({
+  content,
+  Expiration,
+  Exposure,
+  title,
+  setModal,
+}) => {
+  console.log(setModal);
   const tokenn = localStorage.getItem("token");
   const authtoken = {
     headers: {
@@ -35,10 +42,12 @@ export const createPaste = ({ content, Expiration, Exposure, title }) => {
           draggable: true,
           progress: undefined,
         });
+        setModal(false);
       })
 
       .catch((error) => {
         dispatch({ type: "CREATE_PASTE_FAILURE", error });
+        setModal(true);
         toast.error("paste not created", {
           position: "top-center",
           autoClose: 5000,
@@ -66,6 +75,7 @@ export const pasteList = () => {
       .get("https://pastebindemo.herokuapp.com/pastes", authtoken)
 
       .then((res) => {
+        console.log(res);
         dispatch({ type: "PASTE_LIST_SUCCESS", list: res.data });
       })
 
