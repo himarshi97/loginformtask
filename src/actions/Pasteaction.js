@@ -8,7 +8,6 @@ export const createPaste = ({
   title,
   setModal,
 }) => {
-  console.log(setModal);
   const tokenn = localStorage.getItem("token");
   const authtoken = {
     headers: {
