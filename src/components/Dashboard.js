@@ -45,7 +45,7 @@ const formSchema = Yup.object().shape({
 });
 const Dashboard = (props) => {
   const { className } = props;
-  const [state, setstate] = useState(false);
+
   const [modal, setModal] = useState(false);
 
   const toggle = () => setModal(!modal);

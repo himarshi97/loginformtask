@@ -74,7 +74,6 @@ export const pasteList = () => {
       .get("https://pastebindemo.herokuapp.com/pastes", authtoken)
 
       .then((res) => {
-        console.log(res);
         dispatch({ type: "PASTE_LIST_SUCCESS", list: res.data });
       })
 
