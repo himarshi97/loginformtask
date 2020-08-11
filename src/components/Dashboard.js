@@ -66,7 +66,6 @@ const Dashboard = (props) => {
 
   const onSubmit = ({ content, Expiration, Exposure, title }) => {
     dispatch(createPaste({ content, Expiration, Exposure, title, setModal }));
-    dispatch(pasteList(list));
   };
   useEffect(() => {
     dispatch(pasteList());
