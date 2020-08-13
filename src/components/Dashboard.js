@@ -29,12 +29,8 @@ import {
   faSignOutAlt,
   faUserCircle,
 } from "@fortawesome/free-solid-svg-icons";
-
-import "bootstrap/dist/css/bootstrap.min.css";
 import { yupResolver } from "@hookform/resolvers";
 import * as Yup from "yup";
-
-import "react-toastify/dist/ReactToastify.css";
 import { Redirect, useHistory } from "react-router-dom";
 
 const formSchema = Yup.object().shape({
@@ -90,7 +86,7 @@ const Dashboard = (props) => {
       {tokenn ? (
         <>
           <Navbar light expand="md" className="navcolor">
-            <NavbarBrand href="/">
+            <NavbarBrand>
               <img
                 src="https://upload.wikimedia.org/wikipedia/en/3/35/Pastebin.com_logo.png"
                 alt=""

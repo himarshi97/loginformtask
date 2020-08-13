@@ -45,8 +45,7 @@ export const createPaste = ({
         setModal(false);
       })
 
-      .catch((error) => {
-        dispatch({ type: "CREATE_PASTE_FAILURE", error });
+      .catch(() => {
         setModal(true);
         toast.error("paste not created", {
           position: "top-center",
@@ -76,10 +75,6 @@ export const pasteList = () => {
 
       .then((res) => {
         dispatch({ type: "PASTE_LIST_SUCCESS", list: res.data });
-      })
-
-      .catch((error) => {
-        dispatch({ type: "PASTE_LIST_FAILURE", error });
       });
   };
 };
