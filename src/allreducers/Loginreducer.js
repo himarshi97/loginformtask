@@ -7,16 +7,13 @@ const LoginReducers = (state = initialState, action) => {
     case "SIGN_IN_PENDING":
       return {
         ...state,
-
         login: null,
       };
     case "SIGN_IN_SUCCESS":
       return {
         ...state,
-
         login: action.login,
       };
-
     default:
       return { ...state };
   }

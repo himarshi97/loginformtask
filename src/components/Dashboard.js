@@ -69,11 +69,10 @@ const Dashboard = (props) => {
 
   let history = useHistory();
   const tokenn = localStorage.getItem("token");
-
+  console.log(tokenn);
   const logout = () => {
-    const cleartokenn = localStorage.clear("authtoken");
-
-    if (cleartokenn === undefined) {
+    const tokenn = localStorage.clear("token");
+    if (tokenn === undefined) {
       history.push("/");
     } else {
       history.push("/dashboard");
@@ -85,7 +84,7 @@ const Dashboard = (props) => {
     <>
       {tokenn ? (
         <>
-          <Navbar light expand="md" className="navcolor">
+          <Navbar light expand="md" className="nav">
             <NavbarBrand>
               <img
                 src="https://upload.wikimedia.org/wikipedia/en/3/35/Pastebin.com_logo.png"
@@ -144,7 +143,6 @@ const Dashboard = (props) => {
                 <FormGroup>
                   <Label for="exampleText">Content</Label>
                   <Controller
-                    placeholder=""
                     as={Input}
                     type="textarea"
                     ref={register}

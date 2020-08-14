@@ -78,8 +78,7 @@ code {
 
   background-color: #154867;
 }
-.nav {
-}
+
 .selected {
   height: 200px;
   overflow: scroll;
@@ -156,7 +155,7 @@ td {
   text-align: center;
   color: black;
 }
-.navcolor {
+.nav {
   background-color: #154867;
 }
 
@@ -173,5 +172,18 @@ td {
 @media only screen and (max-device-width: 320px) {
   .tabell {
     font-size: 9px;
+  }
+}
+@media only screen and (max-device-width: 768px),
+  (max-device-width: 1024px),
+  (max-device-width: 320px),
+  (max-device-width: 375px) {
+  #Select {
+    width: 350px;
+  }
+}
+@media only screen and (max-device-width: 320px), (max-device-width: 375px) {
+  #Select {
+    width: 250px;
   }
 }
