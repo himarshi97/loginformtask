@@ -29,6 +29,14 @@ const Pastereducers = (state = initialState, action) => {
         loading: false,
         list: action.list,
       };
+    case "DELETE_PASTE_PENDING":
+      return { ...state, loading: true, list: null };
+
+    case "DELETE_PASTE_SUCCESS":
+      return { ...state, loading: false };
+
+    case "DELETE_PASTE_FAILURE":
+      return { ...state, loading: false, error: true, list: null };
 
     default:
       return { ...state };

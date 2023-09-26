@@ -7,7 +7,6 @@ const AppRouter = () => {
     <BrowserRouter>
       <Switch>
         <Route path="/dashboard" component={Dashboard} />
-
         <Route path="/" component={Login} />
       </Switch>
     </BrowserRouter>

@@ -25,6 +25,8 @@
     "reactstrap": "^8.5.1",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
+    "sweetalert": "^2.1.2",
+    "use-fetch": "^0.0.7",
     "yup": "^0.29.1"
   },
   "scripts": {

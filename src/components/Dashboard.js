@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
-import { createPaste, pasteList } from "../actions/Pasteaction.js";
+import { createPaste, pasteList, deletePaste } from "../actions/Pasteaction.js";
 import { useDispatch, useSelector } from "react-redux";
 import Moment from "react-moment";
 import {
@@ -28,6 +28,7 @@ import {
   faPaperPlane,
   faSignOutAlt,
   faUserCircle,
+  faTrashAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { yupResolver } from "@hookform/resolvers";
 import * as Yup from "yup";
@@ -79,7 +80,9 @@ const Dashboard = (props) => {
     }
   };
   const username = localStorage.getItem("username");
-
+  const removehandle = (id) => {
+    dispatch(deletePaste(id));
+  };
   return (
     <>
       {tokenn ? (
@@ -279,6 +282,21 @@ const Dashboard = (props) => {
                                 <Moment format="Do MMM YY">
                                   {item.updated_at}
                                 </Moment>
+                              </td>
+                              <td>
+                                <FontAwesomeIcon
+                                  icon={faTrashAlt}
+                                  className="carticon"
+                                  onClick={() => {
+                                    if (
+                                      window.confirm(
+                                        "Are you sure to delete this record?"
+                                      )
+                                    ) {
+                                      removehandle(item.id);
+                                    }
+                                  }}
+                                />
                               </td>
                             </tr>
                           ))}

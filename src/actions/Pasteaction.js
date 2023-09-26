@@ -78,3 +78,35 @@ export const pasteList = () => {
       });
   };
 };
+export const deletePaste = (id) => {
+  console.log(id);
+  const tokenn = localStorage.getItem("token");
+  const authtoken = {
+    headers: {
+      Authorization: `Bearer ${tokenn}`,
+    },
+  };
+  return (dispatch) => {
+    dispatch({ type: "DELETE_PASTE_PENDING" });
+
+    axios
+      .delete(`https://pastebindemo.herokuapp.com/pastes/${id}`, authtoken)
+
+      .then((res) => {
+        dispatch(pasteList());
+        dispatch({ type: "DELETE_PASTE_SUCCESS" });
+        toast.success("successfully deleted", {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      })
+      .catch((error) => {
+        dispatch({
+          type: "DELETE_PASTE_FAILURE",
+          message: error.message,
+        });
+        toast.error(error.message, {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      });
+  };
+};

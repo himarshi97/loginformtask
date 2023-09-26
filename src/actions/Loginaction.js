@@ -12,7 +12,7 @@ export const signinUser = ({ identifier, password, history }) => {
 
       .then((res) => {
         dispatch({ type: "SIGN_IN_SUCCESS", login: res.data.data });
-
+        console.log(res.data.data);
         toast.success("Login Success", {
           position: "top-center",
           autoClose: 5000,
